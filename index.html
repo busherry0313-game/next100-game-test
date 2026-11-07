@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>下一百层 · 幻想高塔 V0.9</title><style>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>下一百层 V1.2 · 困难模式测试版</title><style>
 :root{font-family:system-ui,-apple-system,'PingFang SC','Microsoft Yahei',sans-serif;color:#39385c}*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#292b51;touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}#shell{position:relative;width:100%;max-width:430px;height:100dvh;height:100svh;margin:0 auto;overflow:hidden;background:#e6dcf6;box-shadow:0 0 36px #11132d88}canvas{width:100%;height:100%;display:block;touch-action:none}#hud{position:absolute;top:max(12px,env(safe-area-inset-top));left:12px;right:12px;display:none;pointer-events:none}.hudbox{background:#fff4dfdc;border:2px solid #f6d7a2;box-shadow:0 3px 10px #34345435;border-radius:15px;padding:7px 10px;font-weight:800}.hudrow{display:flex;align-items:center;justify-content:space-between;gap:8px}.hudrow>*{min-width:0}.hudrow .hudbox{font-size:clamp(12px,3.5vw,17px)}#pauseBtn{pointer-events:auto;border:0;background:#7773ca;color:white;border-radius:14px;padding:8px 12px;font-weight:900;font-size:17px;cursor:pointer}#bones{font-size:21px;letter-spacing:1px}#progress{position:relative;height:9px;flex:1;border-radius:20px;background:#c9c5df;overflow:hidden;border:1px solid #a8a3c9}#fill{height:100%;width:0;background:linear-gradient(90deg,#8fc8a2,#f5cc77)}#controls{display:none;position:absolute;bottom:max(18px,env(safe-area-inset-bottom));left:15px;right:15px;justify-content:space-between;pointer-events:none}.move{pointer-events:auto;width:clamp(76px,24vw,118px);height:clamp(76px,24vw,118px);border-radius:24px;border:3px solid #fff7e9a9;background:#7773c9a8;color:#fff;font-size:45px;box-shadow:0 5px 16px #29264a50;touch-action:none;user-select:none}.move{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}.move.pressed{background:#4d479eeb;transform:scale(.95)}#overlay{position:absolute;inset:0;display:grid;place-items:center;background:#1b27474d;padding:16px;overflow:auto}#overlay.hidden{display:none}#panel{width:min(92%,410px);max-height:calc(100dvh - 35px);overflow:auto;background:linear-gradient(180deg,#fff8ed,#fce8f5);border:4px solid #f4d19b;border-radius:28px;box-shadow:0 12px 40px #25234488;padding:18px;text-align:center}h1{font-size:clamp(30px,8vw,47px);margin:4px 0 8px;color:#5d59b6;text-shadow:2px 2px #ffd1e9}h2{font-size:26px;margin:4px 0 12px;color:#615cbb}.sub{font-size:13px;line-height:1.65;color:#77718d}.btn{border:0;display:block;width:100%;border-radius:20px;margin:10px 0;padding:13px 14px;background:linear-gradient(180deg,#ff81bb,#e94c9b);color:#fff;font-size:18px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #c83e86}.btn.secondary{background:linear-gradient(180deg,#8eafff,#6a75d6);box-shadow:0 4px 0 #5157ac}.btn.tertiary{background:#fff;border:2px solid #b3a9e6;color:#635caa;box-shadow:none}.btn:active{transform:translateY(2px)}.choice{display:flex;gap:10px;margin:16px 0}.person{flex:1;border:3px solid #d8cce4;background:#fff9fc;border-radius:18px;padding:12px 4px;cursor:pointer}.person.selected{border-color:#eeb85b;box-shadow:0 0 0 3px #fff1bf}.face{font-size:53px}.stat{display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:left}.stat div{background:#fff;border-radius:12px;padding:9px;font-size:14px}.note{font-size:12px;color:#807b9c}.small{font-size:14px}.hidden{display:none!important}#countdown{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:#fff;font-size:clamp(68px,21vw,130px);font-weight:1000;text-shadow:0 5px 0 #5d58b4,0 0 25px #3c3876;pointer-events:none}#countdown.visible{display:flex}#rotate{position:absolute;inset:0;display:none;place-items:center;background:#29284ae8;color:white;font-size:24px;text-align:center;padding:20px;z-index:10}@media(orientation:landscape) and (max-height:520px){#rotate{display:grid}}
 
 /* V0.8: homepage-only sky mint pixel UI */
@@ -80,6 +80,27 @@
 .nick-actions button.secondary{background:#274e77;border-color:#88a8c5;color:#e2efff;box-shadow:0 3px 0 #153152}
 #nick-error{font-size:12px;color:#ffe4a4;min-height:17px;margin-top:9px}
 .rank-profile-settings{position:absolute;right:5px;top:4px;z-index:151;border:1px solid #d7b77a;background:#17395b;color:#fff2c8;font-size:10px;padding:3px 5px;cursor:pointer;opacity:.95}
+
+/* V1.2 difficulty picker: separate screen keeps frozen character-selection assets unchanged. */
+#overlay.difficulty-overlay{background:linear-gradient(180deg,#a5dff5,#d0f3e8 60%,#e9f3db);padding:18px;overflow:auto}
+#overlay.difficulty-overlay #panel{width:min(94%,400px);max-height:calc(100svh - 30px);overflow:auto;border:3px solid #d0ad62;border-radius:24px;background:#fffdf3;padding:20px 16px;box-shadow:0 15px 36px #174b6a50}
+.difficulty-card{font-family:'Microsoft YaHei','PingFang SC',system-ui,sans-serif;color:#28506a}
+.difficulty-card h2{font-size:clamp(23px,6vw,29px);color:#275a76;margin:5px 0}
+.difficulty-stars{font-size:24px;color:#c19b3b;letter-spacing:8px}
+.difficulty-sub{font-size:14px;color:#697e8a;margin:8px 0 17px}
+.difficulty-choice{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;min-height:90px;margin:12px 0;border:3px solid #87bad5;border-radius:16px;background:linear-gradient(180deg,#d6f3ff,#91d5ee);box-shadow:0 4px 0 #5b9eba;color:#244d75;cursor:pointer;touch-action:manipulation}
+.difficulty-choice b{font-size:23px}.difficulty-choice span{font-size:13px;font-weight:700}
+.difficulty-choice.hard{background:linear-gradient(180deg,#ffe8b2,#f7c56f);border-color:#dbb05b;box-shadow:0 4px 0 #bc8e47;color:#7a4b21}
+.difficulty-choice:active{transform:translateY(2px)}
+.difficulty-note{font-size:11px;line-height:1.6;color:#687989;margin:15px 0}
+.difficulty-back{border:1px solid #8cbccc;border-radius:12px;padding:10px 20px;background:white;font-size:14px;font-weight:800;color:#366d85;cursor:pointer;touch-action:manipulation}
+
+/* V1.2 approved difficulty design lives in an isolated same-origin-less iframe. */
+#overlay.v12-difficulty-overlay{padding:0!important;inset:0!important;display:block!important;background:#dceef2!important;overflow:hidden!important}
+#overlay.v12-difficulty-overlay #panel{width:100%!important;height:100%!important;max-height:none!important;max-width:none!important;padding:0!important;margin:0!important;background:none!important;border:0!important;box-shadow:none!important;overflow:hidden!important}
+#overlay.v12-difficulty-overlay .v12-difficulty-frame{width:100%;height:100%;border:0;display:block;background:#e5f2f6}
+.v12-error{background:#fff5e2;color:#713f10;padding:25px;word-wrap:break-word;border:2px solid #d5a25e}
+.v12-error button{display:block;margin:20px auto;padding:12px;border-radius:12px}
 </style>
 <style id="visual-v09">
 :root{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;color:#29516d}
@@ -628,6 +649,33 @@ h2{color:#286b91;text-shadow:1px 2px #fff}
 #overlay .final-composition .final-retry{left:15.47619%!important}
 #overlay .final-composition .final-home{left:auto!important;right:15.47619%!important}
 </style>
+
+<style id="v11-integrated-final">
+/* 448x800 locked selection plane: same dimensions on desktop and mobile. */
+#overlay.choose-overlay{padding:0!important;overflow:hidden!important;background:#153957!important}
+#overlay.choose-overlay #panel{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-height:none!important;overflow:hidden!important;padding:0!important;margin:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#overlay.choose-overlay .v11-select-stage{position:absolute!important;left:50%!important;top:50%!important;width:448px!important;height:800px!important;overflow:hidden!important;transform-origin:center center!important;background:#82c5eb}
+#overlay.choose-overlay .v11-select-stage .cs-bg{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:fill!important}
+#overlay.choose-overlay .v11-select-stage .cs-person{height:auto!important;aspect-ratio:auto!important;z-index:3!important;border:0!important;margin:0!important;padding:0!important;background:none!important;overflow:visible!important}
+#overlay.choose-overlay .v11-select-stage .cs-person img{width:100%!important;height:auto!important;object-fit:contain!important;display:block!important}
+#overlay.choose-overlay .v11-select-stage .cs-yue{left:1.4%!important;top:40.2%!important;width:50.6%!important}
+#overlay.choose-overlay .v11-select-stage .cs-can{left:53.3%!important;top:40.2%!important;width:46.8%!important}
+#overlay.choose-overlay .v11-select-stage .cs-yue.v11-new{left:4.017857%!important;top:38.5%!important;width:58.482143%!important}
+#overlay.choose-overlay .v11-select-stage .cs-can.v11-new{left:35.267857%!important;top:38.25%!important;width:59.375%!important}
+#overlay.choose-overlay .v11-select-stage .cs-title-art{left:21.74%!important;top:4.92%!important;width:55.89%!important;height:15.05%!important;object-fit:fill!important}
+#overlay.choose-overlay .v11-select-stage .cs-subtitle-art{left:24.6%!important;top:19.25%!important;width:48.660714%!important;height:auto!important;object-fit:contain!important}
+#overlay.choose-overlay .v11-select-stage .cs-start-art{left:12.5%!important;top:83.2%!important;width:75%!important;height:auto!important;aspect-ratio:2172/724!important}
+#overlay.choose-overlay .v11-select-stage .cs-back-art{left:1.06%!important;top:1.32%!important;width:22.06%!important;height:6%!important}
+#overlay.choose-overlay .v11-select-stage .cs-name-yue-art{left:1.6%!important;top:38.9%!important;width:12%!important;height:18.25%!important}
+#overlay.choose-overlay .v11-select-stage .cs-name-can-art{left:86.4%!important;top:38.9%!important;width:12%!important;height:18.25%!important}
+#overlay.choose-overlay .v11-select-stage .v11-skin-arrow{position:absolute;z-index:11;width:9.2%;aspect-ratio:1;border:1px solid #fff1b5;border-radius:5px;background:linear-gradient(#fff5c9,#ddb05b);color:#795020;box-shadow:0 2px 0 #966934,0 0 4px #ffeb9e;display:grid;place-items:center;font-size:28px;font-weight:900;cursor:pointer;padding:0;touch-action:manipulation}
+#overlay.choose-overlay .v11-select-stage .v11-skin-arrow[hidden]{display:none!important}
+#overlay.choose-overlay .v11-select-stage .v11-yue-arrow{left:48.7%;top:60%}
+#overlay.choose-overlay .v11-select-stage .v11-can-arrow{left:88%;top:60%}
+/* Final result composition was confirmed moved 15px up; buttons down 4px relative to other elements. */
+#overlay .v190-design.final-result .final-composition{transform:translateY(-1.724137931%)!important}
+#overlay .v190-design.final-result .final-composition .final-button{top:95.5172414%!important}
+</style>
 </head><body><div id="shell"><canvas id="game"></canvas><div id="hud"><div id="hudLine"><div id="bones" aria-label="剩余生命：3"></div><span id="floor">第 1 层</span><button id="pauseBtn" aria-label="暂停游戏">Ⅱ</button></div><div id="progress" hidden><div id="fill"></div></div></div><div id="controls"><button class="move" data-dir="-1" aria-label="向左"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="41" rx="17" ry="13"/><ellipse cx="14" cy="24" rx="6" ry="9" transform="rotate(-24 14 24)"/><ellipse cx="27" cy="15" rx="6" ry="9"/><ellipse cx="42" cy="17" rx="6" ry="9" transform="rotate(16 42 17)"/><ellipse cx="53" cy="29" rx="5" ry="8" transform="rotate(28 53 29)"/></svg></button><button class="move" data-dir="1" aria-label="向右"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="41" rx="17" ry="13"/><ellipse cx="14" cy="24" rx="6" ry="9" transform="rotate(-24 14 24)"/><ellipse cx="27" cy="15" rx="6" ry="9"/><ellipse cx="42" cy="17" rx="6" ry="9" transform="rotate(16 42 17)"/><ellipse cx="53" cy="29" rx="5" ry="8" transform="rotate(28 53 29)"/></svg></button></div><div id="countdown"></div><div id="overlay"><div id="panel"></div></div>
 <div id="nick-modal" hidden role="dialog" aria-modal="true" aria-labelledby="nick-heading">
   <form class="nick-card" id="nick-form">
@@ -643,35 +691,35 @@ h2{color:#286b91;text-shadow:1px 2px #fff}
 </div><div id="rotate">📱<br>请将手机转为竖屏<br><small>游戏已暂停</small></div></div><script>
 (()=>{
 // V0.4: V2.4 已确认的双角色透明动画（直接内嵌，离线可运行）。
-const spriteData={"yue_idle":["assets/img_1fe6f2ca3b6e42ef.png","assets/img_e4f056d74dda101d.png"],"yue_walk":["assets/img_963102562f7db521.png","assets/img_a9cfaad230d527b4.png","assets/img_55dbe99b1aa43a47.png","assets/img_86e12c2a99cc5b1e.png"],"yue_fall":["assets/img_b3b55faea14baeba.png"],"yue_land":["assets/img_783413dfb12538ae.png","assets/img_60b3a51c545489de.png","assets/img_1975c088aa0f06f5.png"],"can_idle":["assets/img_141cc13d882623e9.png","assets/img_9b044db40ab4277f.png"],"can_walk":["assets/img_f4813a10e709b816.png","assets/img_3edc1b290ceb9646.png","assets/img_44c92f4c5b66600d.png","assets/img_eaa092a35741b115.png"],"can_fall":["assets/img_52067491abb950a6.png"],"can_land":["assets/img_2ee089ea3415089a.png","assets/img_2e0983bc7c299443.png","assets/img_78759048df275c85.png"]};
+const spriteData={"yue_idle":["assets/img_1fe6f2ca3b6e42ef.webp","assets/img_e4f056d74dda101d.webp"],"yue_walk":["assets/img_963102562f7db521.webp","assets/img_a9cfaad230d527b4.webp","assets/img_55dbe99b1aa43a47.webp","assets/img_86e12c2a99cc5b1e.webp"],"yue_fall":["assets/img_b3b55faea14baeba.webp"],"yue_land":["assets/img_783413dfb12538ae.webp","assets/img_60b3a51c545489de.webp","assets/img_1975c088aa0f06f5.webp"],"can_idle":["assets/img_141cc13d882623e9.webp","assets/img_9b044db40ab4277f.webp"],"can_walk":["assets/img_f4813a10e709b816.webp","assets/img_3edc1b290ceb9646.webp","assets/img_44c92f4c5b66600d.webp","assets/img_eaa092a35741b115.webp"],"can_fall":["assets/img_52067491abb950a6.webp"],"can_land":["assets/img_2ee089ea3415089a.webp","assets/img_2e0983bc7c299443.webp","assets/img_78759048df275c85.webp"]};
 const spriteImages={};
-for(const [key,frames] of Object.entries(spriteData)) spriteImages[key]=frames.map(src=>{const im=new Image();im.src=src;return im});
+for(const [key,frames] of Object.entries(spriteData)) spriteImages[key]=frames.map(src=>{const im=new Image();im._spriteKey=src;im.src=src;return im});
 // V0.4.4: 所有动作按透明像素实际边界归一到原型几何角色的两倍高度（78游戏单位）。
 // 每帧单独计算边界，避免素材画布留白、尺寸和姿态差异造成跳变。
+
+const V11_SPRITES={"yue_A_idle":["assets/v11/anim_yue_A_idle_1.webp","assets/v11/anim_yue_A_idle_2.webp"],"yue_初始_idle":["assets/v11/anim_yue_初始_idle_1.webp","assets/v11/anim_yue_初始_idle_2.webp"],"yue_A_walk":["assets/v11/anim_yue_A_walk_1.webp","assets/v11/anim_yue_A_walk_2.webp","assets/v11/anim_yue_A_walk_3.webp","assets/v11/anim_yue_A_walk_4.webp"],"yue_初始_walk":["assets/v11/anim_yue_初始_walk_1.webp","assets/v11/anim_yue_初始_walk_2.webp","assets/v11/anim_yue_初始_walk_3.webp","assets/v11/anim_yue_初始_walk_4.webp"],"yue_A_fall":["assets/v11/anim_yue_A_fall_1.webp"],"yue_初始_fall":["assets/v11/anim_yue_初始_fall_1.webp"],"can_A_idle":["assets/v11/anim_can_A_idle_1.webp","assets/v11/anim_can_A_idle_2.webp"],"can_初始_idle":["assets/v11/anim_can_初始_idle_1.webp","assets/v11/anim_can_初始_idle_2.webp"],"can_A_walk":["assets/v11/anim_can_A_walk_4.webp","assets/v11/anim_can_A_walk_3.webp","assets/v11/anim_can_A_walk_2.webp","assets/v11/anim_can_A_walk_1.webp"],"can_初始_walk":["assets/v11/anim_can_初始_walk_1.webp","assets/v11/anim_can_初始_walk_2.webp","assets/v11/anim_can_初始_walk_3.webp","assets/v11/anim_can_初始_walk_4.webp"],"can_A_fall":["assets/v11/anim_can_A_fall_1.webp"],"can_初始_fall":["assets/v11/anim_can_初始_fall_1.webp"]};
+for(const [key,files] of Object.entries(V11_SPRITES)){
+ const [who,skin,action]=key.split('_');
+ const finalKey=who+'_'+action+'_'+skin;
+ spriteImages[finalKey]=files.map(src=>{const im=new Image();im._spriteKey=src;im.src=src;return im});
+}
+const V11_IDLE_INTERVAL={'月':{0:310,1:350},'灿':{0:370,1:300}};
 const HERO_VISUAL_HEIGHT=78;
-const spriteBounds=new WeakMap();
+// V1.2.2: precomputed alpha bounds prevent SecurityError on local file:// PC browsers.
+// Original PNG files are unchanged. Bounds use the same alpha >=24 threshold.
+const SPRITE_PRECALCULATED_BOUNDS = {"assets/img_141cc13d882623e9.webp":{"x":160,"y":53,"w":560,"h":797},"assets/img_1975c088aa0f06f5.webp":{"x":40,"y":48,"w":175,"h":222},"assets/img_1fe6f2ca3b6e42ef.webp":{"x":18,"y":18,"w":385,"h":540},"assets/img_2e0983bc7c299443.webp":{"x":72,"y":62,"w":172,"h":221},"assets/img_2ee089ea3415089a.webp":{"x":85,"y":90,"w":195,"h":186},"assets/img_3edc1b290ceb9646.webp":{"x":8,"y":25,"w":230,"h":320},"assets/img_44c92f4c5b66600d.webp":{"x":2,"y":39,"w":229,"h":306},"assets/img_52067491abb950a6.webp":{"x":91,"y":9,"w":117,"h":177},"assets/img_55dbe99b1aa43a47.webp":{"x":57,"y":74,"w":336,"h":387},"assets/img_60b3a51c545489de.webp":{"x":61,"y":78,"w":191,"h":193},"assets/img_783413dfb12538ae.webp":{"x":79,"y":102,"w":213,"h":171},"assets/img_78759048df275c85.webp":{"x":75,"y":19,"w":166,"h":269},"assets/img_86e12c2a99cc5b1e.webp":{"x":57,"y":76,"w":335,"h":385},"assets/img_963102562f7db521.webp":{"x":47,"y":78,"w":355,"h":381},"assets/img_9b044db40ab4277f.webp":{"x":190,"y":56,"w":536,"h":792},"assets/img_a9cfaad230d527b4.webp":{"x":54,"y":76,"w":340,"h":383},"assets/img_b3b55faea14baeba.webp":{"x":86,"y":32,"w":161,"h":177},"assets/img_e4f056d74dda101d.webp":{"x":17,"y":20,"w":386,"h":538},"assets/img_eaa092a35741b115.webp":{"x":3,"y":9,"w":242,"h":335},"assets/img_f4813a10e709b816.webp":{"x":4,"y":2,"w":246,"h":334},"assets/v11/anim_can_A_fall_1.webp":{"x":421,"y":51,"w":801,"h":915},"assets/v11/anim_can_A_idle_1.webp":{"x":150,"y":48,"w":674,"h":808},"assets/v11/anim_can_A_idle_2.webp":{"x":46,"y":51,"w":687,"h":810},"assets/v11/anim_can_A_walk_1.webp":{"x":26,"y":100,"w":1059,"h":1301},"assets/v11/anim_can_A_walk_2.webp":{"x":73,"y":86,"w":1003,"h":1297},"assets/v11/anim_can_A_walk_3.webp":{"x":98,"y":111,"w":982,"h":1310},"assets/v11/anim_can_A_walk_4.webp":{"x":42,"y":90,"w":1027,"h":1320},"assets/v11/anim_can_初始_fall_1.webp":{"x":91,"y":9,"w":117,"h":177},"assets/v11/anim_can_初始_idle_1.webp":{"x":160,"y":53,"w":560,"h":797},"assets/v11/anim_can_初始_idle_2.webp":{"x":190,"y":56,"w":536,"h":792},"assets/v11/anim_can_初始_walk_1.webp":{"x":4,"y":2,"w":246,"h":334},"assets/v11/anim_can_初始_walk_2.webp":{"x":8,"y":25,"w":230,"h":320},"assets/v11/anim_can_初始_walk_3.webp":{"x":2,"y":39,"w":229,"h":306},"assets/v11/anim_can_初始_walk_4.webp":{"x":3,"y":9,"w":242,"h":335},"assets/v11/anim_yue_A_fall_1.webp":{"x":48,"y":119,"w":1031,"h":1247},"assets/v11/anim_yue_A_idle_1.webp":{"x":66,"y":56,"w":945,"h":1351},"assets/v11/anim_yue_A_idle_2.webp":{"x":71,"y":58,"w":952,"h":1320},"assets/v11/anim_yue_A_walk_1.webp":{"x":311,"y":67,"w":767,"h":1057},"assets/v11/anim_yue_A_walk_2.webp":{"x":24,"y":58,"w":1176,"h":1083},"assets/v11/anim_yue_A_walk_3.webp":{"x":0,"y":64,"w":1075,"h":1060},"assets/v11/anim_yue_A_walk_4.webp":{"x":19,"y":41,"w":1015,"h":1083},"assets/v11/anim_yue_初始_fall_1.webp":{"x":86,"y":32,"w":161,"h":177},"assets/v11/anim_yue_初始_idle_1.webp":{"x":18,"y":18,"w":385,"h":540},"assets/v11/anim_yue_初始_idle_2.webp":{"x":17,"y":20,"w":386,"h":538},"assets/v11/anim_yue_初始_walk_1.webp":{"x":47,"y":78,"w":355,"h":381},"assets/v11/anim_yue_初始_walk_2.webp":{"x":57,"y":74,"w":336,"h":387},"assets/v11/anim_yue_初始_walk_3.webp":{"x":57,"y":76,"w":335,"h":385},"assets/v11/anim_yue_初始_walk_4.webp":{"x":40,"y":48,"w":175,"h":222}};
 function getSpriteBounds(im){
- if(spriteBounds.has(im))return spriteBounds.get(im);
- const c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;
- const g=c.getContext('2d',{willReadFrequently:true});g.drawImage(im,0,0);
- const pixels=g.getImageData(0,0,c.width,c.height).data;
- let left=c.width,right=-1,top=c.height,bottom=-1;
- // 忽略极淡的抗锯齿边缘，稳定每帧的实际角色边界。
- for(let y=0;y<c.height;y++)for(let x=0;x<c.width;x++){
-  if(pixels[(y*c.width+x)*4+3]<24)continue;
-  if(x<left)left=x;if(x>right)right=x;if(y<top)top=y;if(y>bottom)bottom=y;
- }
- const bounds=right<left?{x:0,y:0,w:c.width,h:c.height}:{x:left,y:top,w:right-left+1,h:bottom-top+1};
- spriteBounds.set(im,bounds);return bounds;
+ const cached=SPRITE_PRECALCULATED_BOUNDS[im._spriteKey];
+ return cached || {x:0,y:0,w:im.naturalWidth,h:im.naturalHeight};
 }
 const spriteInterval={idle:550,walk:115,fall:160,land:70};
 let spriteAction='idle',spriteActionStart=0,spriteDirection=-1,spriteLandUntil=0;
 function setSpriteAction(action){if(spriteAction!==action){spriteAction=action;spriteActionStart=performance.now()}}
 function drawSpriteHero(hy){
- const who=selected==='月'?'yue':'can',act=spriteAction,key=who+'_'+act,frames=spriteImages[key];
+ const who=selected==='月'?'yue':'can',act=spriteAction,key=who+'_'+act;const sk=v11Skins[selected]||0;const frames=spriteImages[act==='land'?key:key+'_'+(sk?'A':'初始')] || spriteImages[key];
  if(!frames||!frames.length)return;
  const now=performance.now();
- const frameIndex=act==='land'?Math.min(frames.length-1,Math.floor((now-spriteActionStart)/spriteInterval.land)):Math.floor((now-spriteActionStart)/spriteInterval[act])%frames.length;
+ const ms=act==='idle'?V11_IDLE_INTERVAL[selected][sk]:spriteInterval[act];const frameIndex=act==='land'?Math.min(frames.length-1,Math.floor((now-spriteActionStart)/ms)):Math.floor((now-spriteActionStart)/ms)%frames.length;
  const im=frames[frameIndex];if(!im.complete||!im.naturalWidth)return;
  const bounds=getSpriteBounds(im),k=HERO_VISUAL_HEIGHT/bounds.h;
  const dw=bounds.w*k,dh=HERO_VISUAL_HEIGHT;
@@ -682,28 +730,32 @@ function drawSpriteHero(hy){
  ctx.restore();
 }
 'use strict';
+const NEXT100_BUILD='V1.2.2-static-sprite-bounds-PC-fix';
+console.info('[下一百层版本]', NEXT100_BUILD);
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),overlay=document.getElementById('overlay'),panel=document.getElementById('panel'),hud=document.getElementById('hud'),controls=document.getElementById('controls'),countEl=document.getElementById('countdown');
 const $=id=>document.getElementById(id);let W=400,H=750,DPR=1,scale=1,platforms=[],heals=[],particles=[],hero=null,laserY=-220,camY=0,mode='menu',selected=localStorage.getItem('next100-character')||'月',seed=0,rand,elapsed=0,scrollSpeed=138,stepAcc=0,last=0,frames=0,holdLeft=false,holdRight=false,keyboardLeft=false,keyboardRight=false,remaining=0,countType='',prevBest=Number(localStorage.getItem('next100-best')||0),maxFloor=1,highest=1, invuln=0,healFlash=0,laserWarning=0;
-const PLATFORMS_PER_FLOOR=2; // 临时背景测试：每层2个平台
+let difficulty='normal';
+let PLATFORMS_PER_FLOOR=2; // 普通：2；困难：5（每层依次经过的平台数）
 const FIX=1/60,STEP=145,START=280,GRAV=1150,TERMINAL=510,SPEED=235;
 function resize(){DPR=Math.min(devicePixelRatio||1,2);W=document.getElementById('shell').clientWidth;H=document.getElementById('shell').clientHeight;canvas.width=Math.floor(W*DPR);canvas.height=Math.floor(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);scale=Math.max(.65,Math.min(1.25,W/400));}window.addEventListener('resize',resize);resize();
 function rng(s){return ()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296}}function clamp(v,a,b){return Math.max(a,Math.min(b,v))}function rrect(x,y,w,h,r,fill,stroke){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke()}}
 let currentRunBones=0;
-function setup(){currentRunBones=0;countNewChallenge();chapterNoticeLast=-1;chapterNoticeUntil=0;spriteAction='idle';spriteActionStart=performance.now();spriteLandUntil=0;spriteDirection=-1;seed=Math.floor(Math.random()*2147483647);rand=rng(seed);platforms=[];heals=[];particles=[];hero={x:W/2,y:START-20,vy:0,w:27,h:39,hp:3,on:null,crumble:0,slimeCd:0,spikeContact:null};elapsed=0;maxFloor=1;highest=1;scrollSpeed=138;camY=hero.y-H*.5;laserY=camY+68;invuln=0;healFlash=0;holdLeft=holdRight=keyboardLeft=keyboardRight=false;
+function setup(){PLATFORMS_PER_FLOOR=difficulty==='hard'?5:2;achievementStartSnapshot=new Set(Object.entries(readAchievements()).filter(([id,at])=>Boolean(at)).map(([id])=>id));runNewAchievements.clear();runAchievementTracking=true;currentRunBones=0;countNewChallenge();chapterNoticeLast=-1;chapterNoticeUntil=0;spriteAction='idle';spriteActionStart=performance.now();spriteLandUntil=0;spriteDirection=-1;seed=Math.floor(Math.random()*2147483647);rand=rng(seed);platforms=[];heals=[];particles=[];hero={x:W/2,y:START-20,vy:0,w:27,h:39,hp:3,on:null,crumble:0,slimeCd:0,spikeContact:null};elapsed=0;maxFloor=1;highest=1;scrollSpeed=138;camY=hero.y-H*.5;laserY=camY+68;invuln=0;healFlash=0;holdLeft=holdRight=keyboardLeft=keyboardRight=false;
 let healGap=0;
 // V0.3：每个平台横坐标独立随机抽取，不做连通性修正或安全路线规划。
-// 前五层（每层10个平台）保证四种特殊平台各至少出现一次。
-const requiredSpecial=new Map([[2,'belt'],[4,'crumble'],[6,'spike'],[8,'slime']]);
+// 前五层保留四种特殊平台必出各一次，按难度独立设置索引。
+const requiredSpecial=difficulty==='hard'?new Map([[5,'belt'],[10,'crumble'],[15,'spike'],[20,'slime']]):new Map([[2,'belt'],[4,'crumble'],[6,'spike'],[8,'slime']]);
+const forcedSpikeIndex=difficulty==='hard'?15:6;
 let lastEarlySpikeFloor=-10, lastEarlySpikeIndex=-10; // 前10层避免连续尖刺
 for(let i=0;i<100*PLATFORMS_PER_FLOOR;i++){
   const floor=Math.floor(i/PLATFORMS_PER_FLOOR)+1;
-  const width=clamp(105-floor*.49,53,105);
+  const width=85;
   const roll=rand();
   let type=roll<.32?'stone':roll<.49?'belt':roll<.66?'crumble':roll<.83?'spike':'slime';
   if(requiredSpecial.has(i))type=requiredSpecial.get(i);
   if(i===0)type='stone';
-  // 前5层仅保留第4层的一次必出尖刺；第6~10层以5%概率出现，且不能相邻楼层连续出现。
-  if(floor<=5&&type==='spike'&&i!==6)type='stone';
+  // 前5层只允许指定索引的必出尖刺；第6~10层以5%概率出现，且不能相邻楼层连续出现。
+  if(floor<=5&&type==='spike'&&i!==forcedSpikeIndex)type='stone';
   if(floor>=6&&floor<=10){
     if(type==='spike'&&(rand()>=.05||floor===lastEarlySpikeFloor+1))type='stone';
   }
@@ -714,7 +766,7 @@ for(let i=0;i<100*PLATFORMS_PER_FLOOR;i++){
   const edge=width/2+8,minX=edge,maxX=Math.max(edge,W-edge);
   const x=i===0?W/2:minX+rand()*(maxX-minX);
   const y=START+i*STEP;
-  platforms.push({x:x-width/2,y,w:width,h:13,type,dir:rand()<.5?-1:1,age:0,broken:false,used:false});
+  platforms.push({x:x-(type==='slime'?86:width)/2,y,w:type==='slime'?86:width,h:13,type,dir:rand()<.5?-1:1,age:0,broken:false,used:false});
   healGap++;
   if(i>10&&(rand()<.05||healGap>=190)){
     heals.push({x,y:y-27,taken:false});healGap=0;
@@ -731,7 +783,7 @@ function homeHeroData(who){
  try{const b=getSpriteBounds(im),c=document.createElement('canvas');c.width=b.w;c.height=b.h;c.getContext('2d').drawImage(im,b.x,b.y,b.w,b.h,0,0,b.w,b.h);return c.toDataURL('image/png')}catch(e){return im.src}
 }
 const APPROVED_HOME_ART='assets/img_fdb2f586e8534b46.jpg';
-const APPROVED_CHOOSE_ART='assets/img_e75ce7e3a6a6d52c.jpg';
+
 function menu(){
  syncAchievements();mode='menu';hidePlay();document.querySelectorAll('.rank-cloud-settings,.rank-profile-settings').forEach(x=>x.remove());overlay.className='home-overlay';
  const r=readRecords();
@@ -742,52 +794,124 @@ function menu(){
  <div class="art-best">历史最高：${r.bestFloor?('第 '+r.bestFloor+' 层'):'暂无纪录'}</div>`;
 }
 const CS193_BG = "assets/img_da8efb02d671d007.jpg";
-const CS193_YUE = "assets/img_c7d85e88777341fa.png";
-const CS193_CAN = "assets/img_e6913274f6f563fc.png";
+const CS193_YUE = "assets/img_c7d85e88777341fa.webp";
+const CS193_CAN = "assets/img_e6913274f6f563fc.webp";
 
-const CS194_BACK='assets/img_78a9c9d9f7771377.png';
-const CS194_SUBTITLE='assets/img_9c683e92374f56f9.png';
-const CS194_NAME_YUE='assets/img_10c9455bb365b7e5.png';
-const CS194_NAME_CAN='assets/img_9e17ce22054b1d1c.png';
-const CS194_START='assets/img_df4bc62167840281.png';
-const CS194_TITLE='assets/img_3c9197dec9d0a00e.png';
+const CS194_BACK='assets/img_78a9c9d9f7771377.webp';
+const CS194_SUBTITLE='assets/img_9c683e92374f56f9.webp';
+const CS194_NAME_YUE='assets/img_10c9455bb365b7e5.webp';
+
+const CS194_START='assets/img_df4bc62167840281.webp';
+const CS194_TITLE='assets/img_3c9197dec9d0a00e.webp';
 
 
 // V4 frozen character selection artwork, imported without regeneration.
+const V11_CHOOSE={"bg": "assets/v11/choose_背景.jpg", "yue0": "assets/v11/choose_张月_初始.webp", "yue1": "assets/v11/choose_张月_新皮肤A_调试定稿.webp", "can0": "assets/v11/choose_黄灿灿_初始.webp", "can1": "assets/v11/choose_黄灿灿_新皮肤A_调试定稿.webp", "title": "assets/v11/choose_标题.webp", "subtitle": "assets/v11/choose_副标题.webp", "back": "assets/v11/choose_返回.webp", "nameYue": "assets/v11/choose_张月_名牌.webp", "nameCan": "assets/v11/choose_黄灿灿_名牌.webp", "start": "assets/v11/choose_出发.webp"};
+const v11Skins={月:0,灿:0};
 const V4_BG="assets/img_da8efb02d671d007.jpg";
-const V4_YUE="assets/img_578f61c4aa645a08.png";
-const V4_CAN="assets/img_8d9cfc732d6a327a.png";
-const V4_CS194_TITLE="assets/img_3c9197dec9d0a00e.png";
-const V4_CS194_SUBTITLE="assets/img_9c683e92374f56f9.png";
-const V4_CS194_BACK="assets/img_78a9c9d9f7771377.png";
-const V4_CS194_NAME_YUE="assets/img_79caa4023ca2ce6b.png";
-const V4_CS194_NAME_CAN="assets/img_921d44bbfe85639a.png";
-const V4_CS194_START="assets/img_f10d6dfcdb26f211.png";
+const V4_YUE="assets/img_578f61c4aa645a08.webp";
+const V4_CAN="assets/img_8d9cfc732d6a327a.webp";
+const V4_CS194_TITLE="assets/img_3c9197dec9d0a00e.webp";
+const V4_CS194_SUBTITLE="assets/img_9c683e92374f56f9.webp";
+const V4_CS194_BACK="assets/img_78a9c9d9f7771377.webp";
+const V4_CS194_NAME_YUE="assets/img_79caa4023ca2ce6b.webp";
+const V4_CS194_NAME_CAN="assets/img_921d44bbfe85639a.webp";
+const V4_CS194_START="assets/img_f10d6dfcdb26f211.webp";
 function choose(){
  mode='choose';hidePlay();overlay.className='choose-overlay';
  const choice=selected==='月'?'yue':selected==='灿'?'can':'';
- panel.innerHTML=`<div class="cs-stage cs-v4-stage">
-  <img class="cs-bg" src="${V4_BG}" alt="天空城堡背景">
-  <button class="cs-person cs-yue ${choice==='yue'?'selected':''}" type="button" data-person="月" aria-label="选择张月" aria-pressed="${choice==='yue'}"><img src="${V4_YUE}" alt="张月"></button>
-  <button class="cs-person cs-can ${choice==='can'?'selected':''}" type="button" data-person="灿" aria-label="选择黄灿灿" aria-pressed="${choice==='can'}"><img src="${V4_CAN}" alt="黄灿灿"></button>
-  <img class="cs-title-art" src="${V4_CS194_TITLE}" alt="选择角色">
-  <img class="cs-subtitle-art" src="${V4_CS194_SUBTITLE}" alt="今天由谁开启冒险？">
-  <button class="cs-ui-sprite cs-back-art" type="button" data-action="menu" aria-label="返回首页"><img src="${V4_CS194_BACK}" alt="返回"></button>
-  <button class="cs-ui-sprite cs-name-yue-art" type="button" data-person="月" aria-label="选择张月"><img src="${V4_CS194_NAME_YUE}" alt="张月"></button>
-  <button class="cs-ui-sprite cs-name-can-art" type="button" data-person="灿" aria-label="选择黄灿灿"><img src="${V4_CS194_NAME_CAN}" alt="黄灿灿"></button>
-  <button type="button" class="cs-ui-sprite cs-start-art start" data-action="start" aria-label="确认出发" ${choice?'':'disabled'}><img src="${V4_CS194_START}" alt="确认出发"></button>
+ panel.innerHTML=`<div class="cs-stage cs-v4-stage v11-select-stage">
+  <img class="cs-bg" src="${V11_CHOOSE.bg}" alt="背景">
+  <button class="cs-person cs-yue ${v11Skins.月?'v11-new':''} ${choice==='yue'?'selected':''}" type="button" data-person="月" aria-label="选择张月"><img src="${V11_CHOOSE['yue'+v11Skins.月]}" alt="张月"></button>
+  <button class="cs-person cs-can ${v11Skins.灿?'v11-new':''} ${choice==='can'?'selected':''}" type="button" data-person="灿" aria-label="选择黄灿灿"><img src="${V11_CHOOSE['can'+v11Skins.灿]}" alt="黄灿灿"></button>
+  <img class="cs-title-art" src="${V11_CHOOSE.title}" alt="选择角色">
+  <img class="cs-subtitle-art" src="${V11_CHOOSE.subtitle}" alt="今天由谁开启冒险？">
+  <button class="cs-ui-sprite cs-back-art" type="button" data-action="menu" aria-label="返回首页"><img src="${V11_CHOOSE.back}" alt="返回"></button>
+  <button class="cs-ui-sprite cs-name-yue-art" type="button" data-person="月" aria-label="选择张月"><img src="${V11_CHOOSE.nameYue}" alt="张月"></button>
+  <button class="cs-ui-sprite cs-name-can-art" type="button" data-person="灿" aria-label="选择黄灿灿"><img src="${V11_CHOOSE.nameCan}" alt="黄灿灿"></button>
+  <button class="v11-skin-arrow ${choice==='yue'?'v11-yue-arrow':'v11-can-arrow'}" type="button" data-skin="${selected}" aria-label="切换皮肤" ${choice?'':'hidden'}>❯</button>
+  <button type="button" class="cs-ui-sprite cs-start-art start" data-action="difficulty" aria-label="确认出发" ${choice?'':'disabled'}><img src="${V11_CHOOSE.start}" alt="确认出发"></button>
  </div>`;
+ v11FitSelection();
+}
+function v11FitSelection(){
+ const stage=panel.querySelector('.v11-select-stage');
+ if(!stage)return;
+ const shell=document.getElementById('shell');
+ stage.style.transform='translate(-50%,-50%) scale('+Math.min(shell.clientWidth/448,shell.clientHeight/800)+')';
+}
+window.addEventListener('resize',v11FitSelection);
+const V12_DIFFICULTY_HTML = "<!doctype html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"utf-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\" />\n<title>下一百层 · 难度选择UI预览<\/title>\n<style>\n  :root{\n    --w:448px; --h:800px;\n    --gold:#e9c46a; --gold2:#b9821c; --blue:#194f8f; --blue2:#3aa0e8;\n    --cream:#fff8eb; --text:#163d72; --shadow:rgba(10,33,71,.24);\n  }\n  *{box-sizing:border-box}\n  html,body{height:100%;margin:0}\n  body{\n    display:grid; place-items:center; background:linear-gradient(180deg,#dceef2 0%,#cfe4df 100%);\n    font-family:\"Microsoft YaHei\",\"PingFang SC\",sans-serif;\n    color:#234;\n  }\n  .phone{\n    width:min(100vw, calc(100dvh * 448 / 800));\n    aspect-ratio:448/800;\n    position:relative; overflow:hidden;\n    background:#f7fbff; box-shadow:0 18px 50px rgba(0,0,0,.18);\n  }\n  .bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(1.02) brightness(1.04);}\n  .veil{position:absolute; inset:0; background:linear-gradient(180deg, rgba(245,250,255,.22), rgba(255,255,255,.07) 38%, rgba(248,252,255,.18) 100%);}  \n  .back{position:absolute; left:10px; top:10px; width:92px; z-index:4}\n\n  .panel{\n    position:absolute; left:50%; top:94px; transform:translateX(-50%);\n    width:86%; padding:18px 16px 22px;\n    border-radius:30px;\n    background:linear-gradient(180deg, rgba(255,249,238,.94), rgba(254,246,234,.90));\n    border:3px solid rgba(230,191,100,.88);\n    box-shadow:0 14px 28px rgba(26,55,99,.15), inset 0 0 0 2px rgba(255,255,255,.55);\n    backdrop-filter: blur(4px);\n    z-index:2;\n  }\n\n  .ornaments{display:flex; justify-content:center; gap:18px; align-items:center; color:#d4a53c; font-size:20px; margin-top:2px;}\n  .title{\n    margin:8px 0 2px; text-align:center; font-weight:900; letter-spacing:1px;\n    font-size:28px; line-height:1.1;\n    color:#fff8f0;\n    -webkit-text-stroke: 4px #0d4a89;\n    paint-order: stroke fill;\n    text-shadow:0 4px 0 #154d88, 0 0 16px rgba(255,238,183,.8), 0 10px 18px rgba(0,0,0,.08);\n  }\n  .title-fill{\n    position:relative; margin-top:-34px; text-align:center; font-weight:900; letter-spacing:1px;\n    font-size:28px; line-height:1.1;\n    background:linear-gradient(180deg,#fffdf4 0%, #fff6c0 42%, #ffe090 100%);\n    -webkit-background-clip:text; background-clip:text; color:transparent;\n    text-shadow:0 0 14px rgba(255,237,159,.55);\n  }\n  .subtitle{margin:8px auto 10px; text-align:center; font-size:13px; color:#6d7c95; letter-spacing:.5px;}\n\n  .cards{display:grid; gap:14px; margin-top:10px;}\n  .card{\n    position:relative; border-radius:24px; padding:18px 18px 16px;\n    border:3px solid rgba(255,255,255,.45); overflow:hidden; cursor:pointer; user-select:none;\n    box-shadow:0 7px 0 rgba(53,86,121,.24), 0 12px 20px rgba(28,57,93,.11);\n    transition:transform .16s ease, box-shadow .16s ease;\n  }\n  .card:active{transform:translateY(2px); box-shadow:0 4px 0 rgba(53,86,121,.20), 0 8px 14px rgba(28,57,93,.10)}\n  .card::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,.38), rgba(255,255,255,0) 48%); pointer-events:none;}\n  .normal{background:linear-gradient(180deg,#caecff 0%,#98d2f3 100%); border-color:#89bddb;}\n  .hard{background:linear-gradient(180deg,#ffe2a1 0%,#f0c56a 100%); border-color:#d1a13b;}\n  .card.selected{outline:4px solid rgba(255,245,199,.85); outline-offset:1px;}\n  .card .badge{\n    position:absolute; right:12px; top:10px; padding:4px 10px; border-radius:999px;\n    font-size:11px; font-weight:800; letter-spacing:.5px; color:#fff;\n    background:rgba(19,84,145,.88); box-shadow:0 2px 8px rgba(0,0,0,.12);\n  }\n  .hard .badge{background:rgba(158,91,0,.85)}\n  .name{font-size:24px; font-weight:900; color:#144c87; text-align:center; margin-top:2px;}\n  .hard .name{color:#855006}\n  .desc{margin-top:7px; text-align:center; font-weight:800; color:#1d4c78; font-size:15px;}\n  .hard .desc{color:#74470d}\n  .subdesc{margin-top:4px; text-align:center; font-size:12px; color:#355777;}\n  .hard .subdesc{color:#7a5520}\n\n  .note{\n    margin:16px auto 10px; width:90%; text-align:center; font-size:12px; line-height:1.55;\n    color:#5a6880;\n  }\n  .back-mini{\n    display:block; margin:0 auto; width:170px; text-align:center; padding:11px 18px;\n    border-radius:16px; text-decoration:none; font-weight:900; color:#0e4c88; letter-spacing:.5px;\n    background:linear-gradient(180deg,#eefbff,#cfe9f6);\n    border:2px solid #8fb7cf; box-shadow:0 5px 0 rgba(78,121,154,.28);\n  }\n\n  .footer-tip{\n    position:absolute; left:50%; bottom:16px; transform:translateX(-50%);\n    padding:6px 14px; border-radius:999px; font-size:11px; color:rgba(19,62,102,.88);\n    background:rgba(255,255,255,.45); backdrop-filter:blur(3px); z-index:1;\n  }\n<\/style>\n<\/head>\n<body>\n  <div class=\"phone\">\n    <img class=\"bg\" src=\"assets/v11/choose_背景.jpg\" alt=\"背景\" />\n    <div class=\"veil\"><\/div>\n    <button type=\"button\" id=\"topBack\" style=\"border:0;background:transparent;padding:0;cursor:pointer;position:absolute;left:10px;top:10px;width:92px;z-index:4\"><img style=\"width:100%;display:block\" src=\"assets/v11/choose_返回.webp\" alt=\"返回\" /><\/button>\n\n    <section class=\"panel\">\n      <div class=\"ornaments\"><span>☾<\/span><span>✦<\/span><span>✧<\/span><\/div>\n      <div class=\"title\">选择挑战难度<\/div>\n      <div class=\"title-fill\">选择挑战难度<\/div>\n      <div class=\"subtitle\">开启属于你的云端冒险<\/div>\n\n      <div class=\"cards\">\n        <div class=\"card normal\" id=\"normalCard\">\n          <div class=\"name\">普通模式<\/div>\n          <div class=\"desc\">每层 2 个台阶<\/div>\n          <div class=\"subdesc\">保留原版节奏与挑战体验<\/div>\n        <\/div>\n\n        <div class=\"card hard\" id=\"hardCard\">\n          <div class=\"name\">困难模式<\/div>\n          <div class=\"desc\">每层 5 个台阶 · 共 100 层<\/div>\n          <div class=\"subdesc\">更密集的平台节奏，挑战更高上限<\/div>\n        <\/div>\n      <\/div>\n\n      <div class=\"note\">困难模式成绩仅保存在本地<br>暂不参与云端排行榜与成就统计<\/div>\n      <button type=\"button\" class=\"back-mini\" id=\"returnChoose\" style=\"cursor:pointer\">返回角色选择<\/button>\n    <\/section>\n\n    \n  <\/div>\n<script>\n(function(){\n function choose(mode){parent.postMessage({type:'next100-difficulty-choice',choice:mode},'*');}\n document.getElementById('normalCard').addEventListener('click',()=>choose('normal'));\n document.getElementById('hardCard').addEventListener('click',()=>choose('hard'));\n document.getElementById('returnChoose').addEventListener('click',()=>choose('back'));\n document.getElementById('topBack').addEventListener('click',()=>choose('back'));\n})()\n<\/script><\/body><\/html>";
+// V1.2.1: Keep the approved difficulty artwork/UI, but render it in the same
+// document instead of a sandboxed srcdoc iframe. This removes cross-frame
+// postMessage as a prerequisite for starting a run on desktop browsers.
+function difficultyMenu(){
+ mode='difficulty';hidePlay();overlay.className='difficulty-overlay v12-difficulty-overlay';
+ const doc=new DOMParser().parseFromString(V12_DIFFICULTY_HTML,'text/html');
+ const host=document.createElement('div');
+ host.className='v12-native-host';
+ host.style.cssText='width:100%;height:100%;overflow:hidden;display:block;';
+ const root=host.attachShadow({mode:'open'});
+ const style=document.createElement('style');
+ let css=doc.querySelector('style')?.textContent||'';
+ css=css.replace(/html,body\s*\{/,'.v12-native-screen{').replace(/\bbody\s*\{/,'.v12-native-screen{');
+ css+='\n.v12-native-screen{width:100%;height:100%;display:grid;place-items:center;}';
+ style.textContent=css;
+ const screen=document.createElement('div');
+ screen.className='v12-native-screen';
+ screen.innerHTML=doc.body.innerHTML;
+ // Embedded <script> is intentionally inert; actions are connected here.
+ screen.querySelectorAll('script').forEach(script=>script.remove());
+ root.append(style,screen);
+ panel.replaceChildren(host);
+ const normal=root.getElementById('normalCard');
+ const hard=root.getElementById('hardCard');
+ const back=root.getElementById('returnChoose');
+ const topBack=root.getElementById('topBack');
+ function startMode(kind){
+   if(mode!=='difficulty')return;
+   difficulty=kind;
+   try{setup();if(mode!=='count'&&mode!=='play')throw Error('启动后未进入倒计时：'+mode);}
+   catch(err){showStartFailure(err)}
+ }
+ normal.setAttribute('role','button');normal.tabIndex=0;
+ hard.setAttribute('role','button');hard.tabIndex=0;
+ normal.addEventListener('click',()=>startMode('normal'));
+ hard.addEventListener('click',()=>startMode('hard'));
+ for(const [el,kind] of [[normal,'normal'],[hard,'hard']]){
+   el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();startMode(kind)}});
+ }
+ back.addEventListener('click',()=>choose());
+ topBack.addEventListener('click',()=>choose());
+}
+window.addEventListener('message',e=>{
+ if(mode!=='difficulty'||!e.data||e.data.type!=='next100-difficulty-choice')return;
+ const f=document.getElementById('v12-difficulty-frame');
+ if(!f||e.source!==f.contentWindow)return;
+ if(e.data.choice==='back'){choose();return}
+ if(e.data.choice==='normal'||e.data.choice==='hard'){
+  difficulty=e.data.choice;
+  try{setup()}catch(err){showStartFailure(err)}
+ }
+});
+function showStartFailure(err){
+ console.error('下一百层：游戏开始异常',err);
+ mode='difficulty';overlay.className='difficulty-overlay v12-difficulty-overlay';
+ const message=document.createElement('div');message.className='v12-error';
+ message.textContent='游戏启动异常（可截图发送给我）：'+(err&&err.message?err.message:String(err));
+ const back=document.createElement('button');back.textContent='返回角色选择';back.onclick=choose;
+ message.appendChild(back);panel.replaceChildren(message);
 }
 function tutorial(){overlay.className='';mode='tutorial';overlay.classList.remove('hidden');hidePlay();panel.innerHTML=`<h2>游戏说明</h2><p>⬅️ 按住左、右方向键移动角色。<br>角色会受重力下落，<b>不能主动跳跃</b>。</p><p>🪨 普通石板 · ➡️ 传送带<br>💥 碎裂平台 · 🌵 尖刺平台<br>🟢 史莱姆弹力平台</p><p>📷 镜头会自动向下移动，不能落在画面后面。<br>🦴 初始3格生命值，拾取骨头可恢复。<br>躲避上方红色激光，落到第100层的金色平台即通关。</p>${button('选择角色','choose')}${button('返回首页','menu','tertiary')}`}
-const V18_PAUSE_ART="assets/img_54b1cb60d243f39e.jpg";
-const V18_FAIL_YUE_ART="assets/img_8fa7f7bfd0b60563.jpg";
-const V18_FAIL_CAN_ART="assets/img_d569de8a4868f963.jpg";
-const V18_WIN_YUE_ART="assets/img_afa7da8d56b2d45e.jpg";
-const V18_WIN_CAN_ART="assets/img_da07c3bae8e951a6.jpg";
-const V183_CONFIRM_ART='assets/img_9bd56a5c8ff70371.png';
-const V184_PAUSE_ART='assets/img_7949fded9bc05fe0.png';
-const V184_RESTART_ART='assets/img_89b2eb9fc0a67184.png';
-const V184_HOME_ART='assets/img_2690716bf9429051.png';
+
+
+
+
+
+const V183_CONFIRM_ART='assets/img_9bd56a5c8ff70371.webp';
+const V184_PAUSE_ART='assets/img_7949fded9bc05fe0.webp';
+const V184_RESTART_ART='assets/img_89b2eb9fc0a67184.webp';
+const V184_HOME_ART='assets/img_2690716bf9429051.webp';
 function v183Scene(){
  const chapter=Math.min(4,Math.max(0,Math.floor((Math.max(1,maxFloor)-1)/20)));
  return `<img class="v183-scene" src="${CHAPTER_ART_DATA[chapter]}" alt=""><div class="v183-scene-shade"></div>`;
@@ -940,6 +1064,7 @@ async function syncCloudNickname(name){
  await getCloudToken();
  if(!cloudSession?.user_id)return;
  await cloudRequest('/rest/v1/next100_bone_leaderboard?user_id=eq.'+encodeURIComponent(cloudSession.user_id),{method:'PATCH',headers:{Prefer:'return=minimal'},body:JSON.stringify({nickname:name})},true);
+ try{await cloudRequest('/rest/v1/next100_hard_leaderboard?user_id=eq.'+encodeURIComponent(cloudSession.user_id),{method:'PATCH',headers:{Prefer:'return=minimal'},body:JSON.stringify({nickname:name})},true)}catch(e){console.info('困难模式云端表未启用时忽略昵称同步')}
 }
 const nickForm=document.getElementById('nick-form');
 document.getElementById('nick-dismiss').addEventListener('click',()=>{document.getElementById('nick-modal').hidden=true});
@@ -957,7 +1082,7 @@ nickForm.addEventListener('submit',async e=>{
    console.warn('Nickname cloud sync pending:',err);
   }
  }
- if(mode==='leaderboard')leaderboard();
+ if(mode==='leaderboard')loadRankMode(rankMode);
 });
 async function submitBest(){
  if(!cloudConfig())return;
@@ -971,7 +1096,34 @@ async function submitBest(){
  await cloudRequest(endpoint+'?on_conflict=user_id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({user_id:uid,player_id:MY_PLAYER_ID,nickname:displayName(),best_floor:top.floor,best_bones:top.bones,character:top.character,achieved_at:top.date})},true);
 }
 function escapeText(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-const RANK_BOOK_HTML="<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,viewport-fit=cover\"><title>下一百层 · 月灿排行榜 V2 · 狗骨头预览</title><style>\n:root{--gold:#edcf84;--deep:#14345f;--cream:#fff4d7}*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:\"Microsoft YaHei\",\"PingFang SC\",sans-serif;color:#fff;background:#0a1e3e;display:flex;justify-content:center}button{font:inherit;cursor:pointer}.frame{width:min(100%,520px);height:100dvh;min-height:440px;display:flex;flex-direction:column;overflow:hidden;position:relative;isolation:isolate;box-shadow:0 0 70px #0009;background:#529bcd}.frame::before{content:\"\";position:absolute;inset:0;background:url(assets/img_9bd934d131a66732.jpg) center/cover no-repeat;image-rendering:pixelated;z-index:-2}.frame::after{content:\"\";position:absolute;inset:0;background:linear-gradient(#153e7375,#3a7b9b35 40%,#0b2e6590);z-index:-1;pointer-events:none}.header{flex:none;padding:calc(env(safe-area-inset-top) + 11px) 14px 12px;border-bottom:4px double #edcf84;background:linear-gradient(180deg,#15365cf5,#285e90ec);box-shadow:0 7px 16px #07264c85}.topline{display:grid;grid-template-columns:78px 1fr 78px;align-items:center}.back{padding:7px 5px;background:#2d6295;border:2px solid #e9c37e;border-radius:2px;color:#fff3ce;font-size:12px;box-shadow:inset 0 0 0 2px #173c6b}.title{text-align:center;font-size:clamp(21px,5vw,28px);font-weight:900;color:#fff4d3;text-shadow:2px 3px 0 #173b66,0 0 10px #ffe0a86b;letter-spacing:2px;white-space:nowrap}.stars{text-align:right;color:#f7d78e;letter-spacing:2px}.tagline{text-align:center;color:#ceeaff;font-size:11px;letter-spacing:1px;margin:6px 0 9px}.rules{background:#102f58;border:2px solid #b8d6ed;box-shadow:inset 0 0 0 2px #315a84;padding:10px 12px;font-size:13px;color:#e8f5ff;line-height:1.55;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center}.rules-title{color:#fce3a5;font-size:15px;font-weight:900;letter-spacing:.5px;margin-bottom:2px}.key{font-size:11px;color:#d8edff;text-align:center;margin:8px 0 0;line-height:1.45}.listbar{margin:10px 12px 0;flex:none;display:grid;grid-template-columns:42px minmax(0,1fr) 49px 72px;padding:9px 9px;background:#123b70;border:2px solid #f0cf82;border-bottom:none;box-shadow:inset 0 0 0 2px #46729e;color:#ffe8b3;font-size:12px;font-weight:800;text-align:center}.listbar span:nth-child(2){text-align:left;padding-left:9px}.list{margin:0 12px;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#d0ad68 #19436e;border:2px solid #e4bd75;border-top:none;border-bottom:3px solid #e4bd75;background:#082d5fa8;box-shadow:inset 0 0 0 2px #315e8e;scrollbar-width:thin}.entry{display:grid;grid-template-columns:42px minmax(0,1fr) 49px 72px;align-items:center;min-height:55px;margin:3px 4px;padding:5px 4px;background:#153e72ed;border:2px solid #5f8ab5;box-shadow:inset 0 0 0 1px #b8d7ea33;gap:0}.entry:nth-child(even){background:#22517fe9}.entry.podium{background:linear-gradient(90deg,#6b552ecf,#22477b);border-color:#ebc36c}.entry.p2{background:linear-gradient(90deg,#667a8eb5,#22477b);border-color:#c7d8f3}.entry.p3{background:linear-gradient(90deg,#7e5544b5,#22477b);border-color:#d2a886}.rank{text-align:center;font-size:17px;color:#f1d18b;font-weight:900}.person{display:flex;min-width:0;align-items:center;gap:5px}.character{font-size:19px;flex:none;filter:drop-shadow(0 1px 2px #0009)}.nick{font-size:12px;font-weight:750;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#fffcf0}.floor{font-size:16px;text-align:center;font-weight:900;color:#f7dd94;white-space:nowrap}.floor small{font-size:9px;color:#d6eafa;padding-left:1px}.bones{font-variant-numeric:tabular-nums;text-align:center;font-size:15px;font-weight:900;color:#fff0bc;white-space:nowrap;text-shadow:1px 1px #123b66}.bottom{flex:none;background:linear-gradient(180deg,#214a7dec,#10294cef);border-top:3px double #f2d690;padding:10px 12px calc(env(safe-area-inset-bottom) + 12px);box-shadow:0 -5px 15px #0b2c5088}.yourtitle{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#ffe3a0;font-weight:900;margin-bottom:6px}.you{display:grid;grid-template-columns:42px minmax(0,1fr) 49px 72px;align-items:center;gap:0;padding:9px 4px;border:2px solid #f2d58b;background:#316394;box-shadow:inset 0 0 0 2px #164373}.you .nick{color:#fff}.note{font-size:10px;color:#bfdaee;line-height:1.5;margin-top:7px;text-align:center}@media(max-width:365px){.title{font-size:19px}.entry,.listbar,.you{grid-template-columns:34px minmax(0,1fr) 43px 65px}.nick{font-size:11px}.floor{font-size:14px}.bones{font-size:13px}.character{font-size:16px}}@media(max-height:600px){.tagline{margin:4px 0}.header{padding-top:6px;padding-bottom:5px}.key{margin-top:3px}.rules{padding:4px 6px}.entry{min-height:48px}.bottom{padding-top:5px;padding-bottom:5px}} \n/* V4: pixel-fantasy decorative layer; ranking logic and column widths unchanged */\n.frame{isolation:isolate}\n.frame:before{image-rendering:pixelated}\n.header{position:relative;padding-top:calc(env(safe-area-inset-top) + 12px);border-bottom:3px solid #ebc57c;box-shadow:inset 0 -3px 0 #654f7d,0 7px 0 #092c57a8,0 12px 20px #051c3a88;background:linear-gradient(180deg,#102c53f8,#275889f4 70%,#24447af2)}\n.header:before,.header:after{content:'✦';position:absolute;top:52px;font-size:21px;color:#f1c970;text-shadow:2px 2px #27446e,0 0 6px #fff0bb77;pointer-events:none}\n.header:before{left:11px}.header:after{right:11px}\n.title{font-family:inherit;font-weight:950;color:#fff1c6;text-shadow:2px 2px 0 #9c7437,-2px -2px 0 #213957,3px 4px 0 #071e41,0 0 10px #fbd88688;filter:drop-shadow(0 1px 2px #081a35)}\n.title:before{content:'☾ ✦';color:#f1dba4;margin-right:6px;font-size:.72em;vertical-align:3px;letter-spacing:1px}\n.title:after{content:'✦ ☾';color:#f3d47d;margin-left:6px;font-size:.72em;vertical-align:3px;letter-spacing:1px}\n.tagline{letter-spacing:1px;text-shadow:1px 2px #0c2949;margin-top:8px}\n.topline .back{font-weight:800;border:2px solid #efd18e;box-shadow:inset 2px 2px 0 #5e91bb,inset -2px -2px 0 #0c2b51,3px 3px 0 #061d3e;color:#fff0be;background:#235284}\n.topline .stars{font-size:20px;letter-spacing:0;text-shadow:1px 2px #234568}\n.rules{position:relative;margin:12px 6px 0;padding:10px 16px;background:linear-gradient(#0d294df5,#153d6bf5);border:3px solid #e7c37a;outline:2px solid #183d65;outline-offset:-6px;box-shadow:4px 4px 0 #071c3f, inset 0 0 0 1px #fff0bd37}\n.rules:before,.rules:after{position:absolute;top:-11px;content:'◆';font-size:18px;color:#f6df9c;text-shadow:1px 2px #6c4e35}\n.rules:before{left:9px}.rules:after{right:9px}\n.rules-title{font-size:16px;letter-spacing:2px;text-shadow:2px 2px #173453}\n.rules-title:before,.rules-title:after{content:'✧';color:#eacb8d;font-size:12px;margin:0 9px}\n.key{color:#eaf4ff;font-size:11px;padding-top:4px}\n.listbar{position:relative;border:3px solid #eac87a;background:linear-gradient(180deg,#305e91,#12345b);box-shadow:inset 0 0 0 2px #5b8bb6,3px 3px 0 #082448;letter-spacing:.2px}\n.listbar:before{content:'✦ 冒险者荣誉榜 ✦';position:absolute;bottom:100%;left:0;right:0;transform:translateY(-3px);pointer-events:none;text-align:center;background:#13365e;color:#ffe3aa;border:2px solid #eac87a;border-bottom:0;padding:3px 0;font-size:10px;font-weight:900;letter-spacing:2px}\n.listbar{margin-top:29px}\n.list{border:3px solid #d9b66f;border-top:0;box-shadow:inset 3px 0 #315e89,inset -3px 0 #315e89,3px 3px 0 #082448;background:linear-gradient(0deg,#08234fb0,#093468bf);}\n.entry{position:relative;border:2px solid #6c97c1;box-shadow:inset 0 0 0 2px #234c78,2px 2px 0 #071e4199;background:linear-gradient(180deg,#1d4e80ed,#17365fe8)}\n.entry:nth-child(even){background:linear-gradient(180deg,#24598bec,#1b4274e8)}\n.entry:after{content:'✦';position:absolute;right:1px;top:0;font-size:7px;color:#d9bd7b99;pointer-events:none}\n.entry.podium{border-width:3px;box-shadow:inset 0 0 0 2px #ddca9655,3px 3px 0 #092045;min-height:60px}\n.entry.p1{background:linear-gradient(100deg,#795b31e8,#3b5578df 54%,#1d487bde);border-color:#f1d68d}\n.entry.p2{background:linear-gradient(100deg,#5b7389ed,#325780df 54%,#1a4778e0);border-color:#d6e8ff}\n.entry.p3{background:linear-gradient(100deg,#794f43ea,#325780de 54%,#1b4677e0);border-color:#e8b491}\n.entry.podium .rank{font-size:21px;filter:drop-shadow(0 0 3px #ffebbd6e)}\n.entry.p1:before,.entry.p2:before,.entry.p3:before{content:'✦';position:absolute;top:3px;left:35px;font-size:10px;color:#ffe9b6}\n.entry.p2:before{color:#e2ebff}.entry.p3:before{color:#ffd1ad}\n.nick{text-shadow:1px 2px #0b2c50}\n.bottom{position:relative;border-top:4px solid #f4d68f;background:linear-gradient(180deg,#1e4c7cf8,#102846fa);box-shadow:inset 0 3px 0 #5b8bae,0 -5px 18px #091d3b9c}\n.bottom:before{content:'✦';position:absolute;left:12px;top:7px;color:#f6d58e;font-size:12px}\n.bottom:after{content:'✦';position:absolute;right:12px;top:7px;color:#f6d58e;font-size:12px}\n.yourtitle{justify-content:space-around;padding:2px 14px 3px;letter-spacing:.5px;text-shadow:1px 1px #0b315d}\n.you{position:relative;border:3px solid #f5d991;outline:2px solid #294b71;outline-offset:-6px;background:linear-gradient(100deg,#28598a,#3e709c 56%,#214576);box-shadow:3px 3px 0 #061c38,inset 0 0 0 2px #dfbf7c66}\n.you:before{content:'◆';position:absolute;top:-11px;left:6px;color:#ffe9ac}\n.you:after{content:'◆';position:absolute;top:-11px;right:6px;color:#ffe9ac}\n@media(max-height:640px){.rules{margin-top:8px;padding:5px 8px}.listbar{margin-top:25px}.header:before,.header:after{display:none}}\n@media(max-width:365px){.title:before,.title:after{display:none}.header:before,.header:after{display:none}.rules{margin-left:0;margin-right:0;padding:7px 8px}.rules-title{font-size:14px}.key{font-size:10px}.yourtitle{padding-left:8px;padding-right:8px}}\n</style></head><body><main class=\"frame\"><header class=\"header\"><div class=\"topline\"><button class=\"back\" type=\"button\" >◀ 返回</button><div class=\"title\">月灿排行榜</div><div class=\"stars\">✦ ✧</div></div><p class=\"tagline\">向下一百层，向着更好的自己</p><div class=\"rules\"><div class=\"rules-title\">排名规则</div><div>最高到达层数优先</div><div>同层时本局拾取狗骨头越多越靠前</div><div>完全相同时按提交先后</div></div><div class=\"key\">角色标识说明：🌙 / 🌋 表示刷新纪录时使用的角色，与角色皮肤无关</div></header><div class=\"listbar\"><span>名次</span><span>玩家</span><span>层数</span><span>🦴 骨头</span></div><section class=\"list\" aria-label=\"全服排行榜\" role=\"list\" id=\"rankEntries\"></section><footer class=\"bottom\"><div class=\"yourtitle\"><span>✦ 我的最佳成绩</span><span id=\"myPosition\">个人排名 · 暂无记录</span></div><div class=\"you\" id=\"myEntry\"></div><div class=\"note\" id=\"tip\">实际记录 · 最高层数优先，同层比较本局拾取的骨头数</div></footer></main><script>\nfunction esc(s){return String(s??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]))}\nfunction fmt(r,i,isSelf){const rank=isSelf?'我的':i<3?['🥇','🥈','🥉'][i]:String(i+1).padStart(2,'0');const symbol=r.character==='灿'?'🌋':'🌙';return `<div class=\"rank\">${rank}</div><div class=\"person\"><span class=\"character\">${symbol}</span><span class=\"nick\">${esc(r.nickname||r.player_id||'玩家')}</span></div><div class=\"floor\">${Math.max(0,Number(r.best_floor)||0)}<small>层</small></div><div class=\"bones\">${Math.max(0,Number(r.best_bones)||0)}</div>`}\nwindow.addEventListener('message',e=>{if(!e.data||e.data.type!=='next100-rank-data')return;const payload=e.data;const all=payload.rows||[];const list=document.getElementById('rankEntries');list.replaceChildren();all.slice(0,20).forEach((r,i)=>{const entry=document.createElement('div');entry.className='entry'+(i<3?' podium p'+(i+1):'');entry.setAttribute('role','listitem');entry.innerHTML=fmt(r,i,false);list.appendChild(entry)});if(!all.length){list.innerHTML='<p style=\"text-align:center;padding:26px 8px;background:#14345f;color:#ffe5ac\">暂无排行记录，快来挑战吧！</p>'}const self=payload.self;document.getElementById('myEntry').innerHTML=self?fmt(self,Math.max(0,payload.position-1),true):'<span style=\"grid-column:1/-1;text-align:center\">暂无本局骨头纪录</span>';document.getElementById('myPosition').textContent='个人排名 · '+(payload.position?'第 '+payload.position+' 名':'尚未上榜');document.getElementById('tip').textContent=payload.message||'最高到达层数优先；同层时本局骨头数越多越靠前';});\ndocument.querySelector('.back').addEventListener('click',()=>parent.postMessage({type:'next100-rank-back'},'*'));\n<\/script></body></html>";
+const RANK_BOOK_HTML="<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,viewport-fit=cover\"><title>下一百层 · 月灿排行榜 V2 · 狗骨头预览<\/title><style>\n:root{--gold:#edcf84;--deep:#14345f;--cream:#fff4d7}*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:\"Microsoft YaHei\",\"PingFang SC\",sans-serif;color:#fff;background:#0a1e3e;display:flex;justify-content:center}button{font:inherit;cursor:pointer}.frame{width:min(100%,520px);height:100dvh;min-height:440px;display:flex;flex-direction:column;overflow:hidden;position:relative;isolation:isolate;box-shadow:0 0 70px #0009;background:#529bcd}.frame::before{content:\"\";position:absolute;inset:0;background:url(assets/img_9bd934d131a66732.jpg) center/cover no-repeat;image-rendering:pixelated;z-index:-2}.frame::after{content:\"\";position:absolute;inset:0;background:linear-gradient(#153e7375,#3a7b9b35 40%,#0b2e6590);z-index:-1;pointer-events:none}.header{flex:none;padding:calc(env(safe-area-inset-top) + 11px) 14px 12px;border-bottom:4px double #edcf84;background:linear-gradient(180deg,#15365cf5,#285e90ec);box-shadow:0 7px 16px #07264c85}.topline{display:grid;grid-template-columns:72px minmax(0,1fr) 112px;align-items:center}.back{padding:7px 5px;background:#2d6295;border:2px solid #e9c37e;border-radius:2px;color:#fff3ce;font-size:12px;box-shadow:inset 0 0 0 2px #173c6b}.title{text-align:center;font-size:clamp(21px,5vw,28px);font-weight:900;color:#fff4d3;text-shadow:2px 3px 0 #173b66,0 0 10px #ffe0a86b;letter-spacing:2px;white-space:nowrap}.stars{text-align:right;color:#f7d78e;letter-spacing:2px}.tagline{text-align:center;color:#ceeaff;font-size:11px;letter-spacing:1px;margin:6px 0 9px}.rules{background:#102f58;border:2px solid #b8d6ed;box-shadow:inset 0 0 0 2px #315a84;padding:10px 12px;font-size:13px;color:#e8f5ff;line-height:1.55;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center}.rules-title{color:#fce3a5;font-size:15px;font-weight:900;letter-spacing:.5px;margin-bottom:2px}.key{font-size:11px;color:#d8edff;text-align:center;margin:8px 0 0;line-height:1.45}.listbar{margin:10px 12px 0;flex:none;display:grid;grid-template-columns:42px minmax(0,1fr) 49px 72px;padding:9px 9px;background:#123b70;border:2px solid #f0cf82;border-bottom:none;box-shadow:inset 0 0 0 2px #46729e;color:#ffe8b3;font-size:12px;font-weight:800;text-align:center}.listbar span:nth-child(2){text-align:left;padding-left:9px}.list{margin:0 12px;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#d0ad68 #19436e;border:2px solid #e4bd75;border-top:none;border-bottom:3px solid #e4bd75;background:#082d5fa8;box-shadow:inset 0 0 0 2px #315e8e;scrollbar-width:thin}.entry{display:grid;grid-template-columns:42px minmax(0,1fr) 49px 72px;align-items:center;min-height:55px;margin:3px 4px;padding:5px 4px;background:#153e72ed;border:2px solid #5f8ab5;box-shadow:inset 0 0 0 1px #b8d7ea33;gap:0}.entry:nth-child(even){background:#22517fe9}.entry.podium{background:linear-gradient(90deg,#6b552ecf,#22477b);border-color:#ebc36c}.entry.p2{background:linear-gradient(90deg,#667a8eb5,#22477b);border-color:#c7d8f3}.entry.p3{background:linear-gradient(90deg,#7e5544b5,#22477b);border-color:#d2a886}.rank{text-align:center;font-size:17px;color:#f1d18b;font-weight:900}.person{display:flex;min-width:0;align-items:center;gap:5px}.character{font-size:19px;flex:none;filter:drop-shadow(0 1px 2px #0009)}.nick{font-size:12px;font-weight:750;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#fffcf0}.floor{font-size:16px;text-align:center;font-weight:900;color:#f7dd94;white-space:nowrap}.floor small{font-size:9px;color:#d6eafa;padding-left:1px}.bones{font-variant-numeric:tabular-nums;text-align:center;font-size:15px;font-weight:900;color:#fff0bc;white-space:nowrap;text-shadow:1px 1px #123b66}.bottom{flex:none;background:linear-gradient(180deg,#214a7dec,#10294cef);border-top:3px double #f2d690;padding:10px 12px calc(env(safe-area-inset-bottom) + 12px);box-shadow:0 -5px 15px #0b2c5088}.yourtitle{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#ffe3a0;font-weight:900;margin-bottom:6px}.you{display:grid;grid-template-columns:42px minmax(0,1fr) 49px 72px;align-items:center;gap:0;padding:9px 4px;border:2px solid #f2d58b;background:#316394;box-shadow:inset 0 0 0 2px #164373}.you .nick{color:#fff}.note{font-size:10px;color:#bfdaee;line-height:1.5;margin-top:7px;text-align:center}@media(max-width:365px){.title{font-size:19px}.entry,.listbar,.you{grid-template-columns:34px minmax(0,1fr) 43px 65px}.nick{font-size:11px}.floor{font-size:14px}.bones{font-size:13px}.character{font-size:16px}}@media(max-height:600px){.tagline{margin:4px 0}.header{padding-top:6px;padding-bottom:5px}.key{margin-top:3px}.rules{padding:4px 6px}.entry{min-height:48px}.bottom{padding-top:5px;padding-bottom:5px}} \n/* V4: pixel-fantasy decorative layer; ranking logic and column widths unchanged */\n.frame{isolation:isolate}\n.frame:before{image-rendering:pixelated}\n.header{position:relative;padding-top:calc(env(safe-area-inset-top) + 12px);border-bottom:3px solid #ebc57c;box-shadow:inset 0 -3px 0 #654f7d,0 7px 0 #092c57a8,0 12px 20px #051c3a88;background:linear-gradient(180deg,#102c53f8,#275889f4 70%,#24447af2)}\n.header:before,.header:after{content:'✦';position:absolute;top:52px;font-size:21px;color:#f1c970;text-shadow:2px 2px #27446e,0 0 6px #fff0bb77;pointer-events:none}\n.header:before{left:11px}.header:after{right:11px}\n.title{font-family:inherit;font-weight:950;color:#fff1c6;text-shadow:2px 2px 0 #9c7437,-2px -2px 0 #213957,3px 4px 0 #071e41,0 0 10px #fbd88688;filter:drop-shadow(0 1px 2px #081a35)}\n.title:before{content:'☾ ✦';color:#f1dba4;margin-right:6px;font-size:.72em;vertical-align:3px;letter-spacing:1px}\n.title:after{content:'✦ ☾';color:#f3d47d;margin-left:6px;font-size:.72em;vertical-align:3px;letter-spacing:1px}\n.tagline{letter-spacing:1px;text-shadow:1px 2px #0c2949;margin-top:8px}\n.topline .back{font-weight:800;border:2px solid #efd18e;box-shadow:inset 2px 2px 0 #5e91bb,inset -2px -2px 0 #0c2b51,3px 3px 0 #061d3e;color:#fff0be;background:#235284}\n.topline .stars{font-size:20px;letter-spacing:0;text-shadow:1px 2px #234568}\n.rules{position:relative;margin:12px 6px 0;padding:10px 16px;background:linear-gradient(#0d294df5,#153d6bf5);border:3px solid #e7c37a;outline:2px solid #183d65;outline-offset:-6px;box-shadow:4px 4px 0 #071c3f, inset 0 0 0 1px #fff0bd37}\n.rules:before,.rules:after{position:absolute;top:-11px;content:'◆';font-size:18px;color:#f6df9c;text-shadow:1px 2px #6c4e35}\n.rules:before{left:9px}.rules:after{right:9px}\n.rules-title{font-size:16px;letter-spacing:2px;text-shadow:2px 2px #173453}\n.rules-title:before,.rules-title:after{content:'✧';color:#eacb8d;font-size:12px;margin:0 9px}\n.key{color:#eaf4ff;font-size:11px;padding-top:4px}\n.listbar{position:relative;border:3px solid #eac87a;background:linear-gradient(180deg,#305e91,#12345b);box-shadow:inset 0 0 0 2px #5b8bb6,3px 3px 0 #082448;letter-spacing:.2px}\n.listbar:before{content:'✦ 冒险者荣誉榜 ✦';position:absolute;bottom:100%;left:0;right:0;transform:translateY(-3px);pointer-events:none;text-align:center;background:#13365e;color:#ffe3aa;border:2px solid #eac87a;border-bottom:0;padding:3px 0;font-size:10px;font-weight:900;letter-spacing:2px}\n.listbar{margin-top:29px}\n.list{border:3px solid #d9b66f;border-top:0;box-shadow:inset 3px 0 #315e89,inset -3px 0 #315e89,3px 3px 0 #082448;background:linear-gradient(0deg,#08234fb0,#093468bf);}\n.entry{position:relative;border:2px solid #6c97c1;box-shadow:inset 0 0 0 2px #234c78,2px 2px 0 #071e4199;background:linear-gradient(180deg,#1d4e80ed,#17365fe8)}\n.entry:nth-child(even){background:linear-gradient(180deg,#24598bec,#1b4274e8)}\n.entry:after{content:'✦';position:absolute;right:1px;top:0;font-size:7px;color:#d9bd7b99;pointer-events:none}\n.entry.podium{border-width:3px;box-shadow:inset 0 0 0 2px #ddca9655,3px 3px 0 #092045;min-height:60px}\n.entry.p1{background:linear-gradient(100deg,#795b31e8,#3b5578df 54%,#1d487bde);border-color:#f1d68d}\n.entry.p2{background:linear-gradient(100deg,#5b7389ed,#325780df 54%,#1a4778e0);border-color:#d6e8ff}\n.entry.p3{background:linear-gradient(100deg,#794f43ea,#325780de 54%,#1b4677e0);border-color:#e8b491}\n.entry.podium .rank{font-size:21px;filter:drop-shadow(0 0 3px #ffebbd6e)}\n.entry.p1:before,.entry.p2:before,.entry.p3:before{content:'✦';position:absolute;top:3px;left:35px;font-size:10px;color:#ffe9b6}\n.entry.p2:before{color:#e2ebff}.entry.p3:before{color:#ffd1ad}\n.nick{text-shadow:1px 2px #0b2c50}\n.bottom{position:relative;border-top:4px solid #f4d68f;background:linear-gradient(180deg,#1e4c7cf8,#102846fa);box-shadow:inset 0 3px 0 #5b8bae,0 -5px 18px #091d3b9c}\n.bottom:before{content:'✦';position:absolute;left:12px;top:7px;color:#f6d58e;font-size:12px}\n.bottom:after{content:'✦';position:absolute;right:12px;top:7px;color:#f6d58e;font-size:12px}\n.yourtitle{justify-content:space-around;padding:2px 14px 3px;letter-spacing:.5px;text-shadow:1px 1px #0b315d}\n.you{position:relative;border:3px solid #f5d991;outline:2px solid #294b71;outline-offset:-6px;background:linear-gradient(100deg,#28598a,#3e709c 56%,#214576);box-shadow:3px 3px 0 #061c38,inset 0 0 0 2px #dfbf7c66}\n.you:before{content:'◆';position:absolute;top:-11px;left:6px;color:#ffe9ac}\n.you:after{content:'◆';position:absolute;top:-11px;right:6px;color:#ffe9ac}\n@media(max-height:640px){.rules{margin-top:8px;padding:5px 8px}.listbar{margin-top:25px}.header:before,.header:after{display:none}}\n@media(max-width:365px){.title:before,.title:after{display:none}.header:before,.header:after{display:none}.rules{margin-left:0;margin-right:0;padding:7px 8px}.rules-title{font-size:14px}.key{font-size:10px}.yourtitle{padding-left:8px;padding-right:8px}}\n\n.mode-switch{width:49px;min-height:34px;padding:6px 7px;background:linear-gradient(180deg,#e5f7ff,#8ec9e9);color:#103d78;font-size:12px;line-height:1.25;font-weight:900;border:2px solid #eccb83;border-radius:10px;box-shadow:0 3px 0 #826c48, inset 0 0 0 1px #fff8e9;touch-action:manipulation;white-space:nowrap}\n.mode-switch:active{transform:translateY(2px);box-shadow:0 1px 0 #826c48}\n.tagline #modeIndicator{color:#ffe2a0;font-weight:900;letter-spacing:.5px}\n@media(max-width:380px){.topline{grid-template-columns:66px minmax(0,1fr) 103px}.mode-switch{font-size:12px;padding:5px}.title{font-size:20px;letter-spacing:0}}\n.top-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0}\n.nickname-reserved{width:52px;flex:0 1 52px;height:34px}\n.topline .title{font-size:clamp(19px,4.7vw,26px);letter-spacing:0;white-space:nowrap}\n@media(max-width:380px){.topline .title{font-size:19px}.nickname-reserved{width:46px;flex-basis:46px}}\n\n/* v1.2: header controls and a genuinely centered title, separated vertically */\n.header .topline{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:38px}\n.header .top-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-shrink:0}\n.header #rankTitle{display:block;position:relative;width:100%;margin:9px auto 7px;text-align:center;line-height:1.35;font-size:clamp(23px,5.4vw,29px);letter-spacing:1px;white-space:nowrap}\n.nickname-edit,.mode-switch{min-height:34px;padding:6px 9px;border:2px solid #eccb83;border-radius:10px;box-shadow:0 3px 0 #826c48,inset 0 0 0 1px #fff8e9;touch-action:manipulation;white-space:nowrap;font-size:12px;font-weight:900}\n.nickname-edit{color:#fff3ce;background:linear-gradient(180deg,#3c75a5,#204f84)}\n.mode-switch{width:51px;background:linear-gradient(180deg,#e5f7ff,#8ec9e9);color:#103d78}\n.nickname-edit:active,.mode-switch:active{transform:translateY(2px);box-shadow:0 1px 0 #826c48}\n@media(max-width:365px){.header #rankTitle{font-size:24px}.header .topline{gap:5px}.header .top-actions{gap:5px}.nickname-edit,.mode-switch{padding:6px;font-size:11px}.mode-switch{width:46px}}\n<\/style><\/head><body><main class=\"frame\"><header class=\"header\"><div class=\"topline\"><button class=\"back\" type=\"button\">◀ 返回<\/button><div class=\"top-actions\"><button class=\"nickname-edit\" id=\"nicknameEdit\" type=\"button\">修改昵称<\/button><button class=\"mode-switch\" id=\"modeSwitch\" type=\"button\" aria-label=\"切换到普通模式\">普通<\/button><\/div><\/div><div class=\"title\" id=\"rankTitle\">排行榜・困难<\/div><p class=\"tagline\"><span id=\"modeIndicator\">✦ 困难模式排行榜 ✦<\/span> · 向着更好的自己<\/p><div class=\"rules\"><div class=\"rules-title\">排名规则<\/div><div>最高到达层数优先<\/div><div>同层时本局拾取狗骨头越多越靠前<\/div><div>完全相同时按提交先后<\/div><\/div><div class=\"key\">角色标识：🌙 / 🌋 代表使用的角色，与皮肤无关<\/div><\/header><div class=\"listbar\"><span>名次<\/span><span>玩家<\/span><span>层数<\/span><span>🦴 骨头<\/span><\/div><section class=\"list\" aria-label=\"全服排行榜\" role=\"list\" id=\"rankEntries\"><\/section><footer class=\"bottom\"><div class=\"yourtitle\"><span>✦ 我的最佳成绩<\/span><span id=\"myPosition\">个人排名 · 暂无记录<\/span><\/div><div class=\"you\" id=\"myEntry\"><\/div><div class=\"note\" id=\"tip\">UI 示例数据 · 非真实排名<\/div><\/footer><\/main><script>\nfunction esc(s){return String(s??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]))}\nfunction fmt(r,i,isSelf){const rank=isSelf?'我的':i<3?['🥇','🥈','🥉'][i]:String(i+1).padStart(2,'0');const symbol=r.character==='灿'?'🌋':'🌙';return `<div class=\"rank\">${rank}<\/div><div class=\"person\"><span class=\"character\">${symbol}<\/span><span class=\"nick\">${esc(r.nickname||r.player_id||'玩家')}<\/span><\/div><div class=\"floor\">${Math.max(0,Number(r.best_floor)||0)}<small>层<\/small><\/div><div class=\"bones\">${Math.max(0,Number(r.best_bones)||0)}<\/div>`}\nwindow.addEventListener('message',e=>{if(!e.data||e.data.type!=='next100-rank-data')return;const payload=e.data;const all=payload.rows||[];const list=document.getElementById('rankEntries');list.replaceChildren();all.slice(0,20).forEach((r,i)=>{const entry=document.createElement('div');entry.className='entry'+(i<3?' podium p'+(i+1):'');entry.setAttribute('role','listitem');entry.innerHTML=fmt(r,i,false);list.appendChild(entry)});if(!all.length){list.innerHTML='<p style=\"text-align:center;padding:26px 8px;background:#14345f;color:#ffe5ac\">暂无排行记录，快来挑战吧！<\/p>'}const self=payload.self;document.getElementById('myEntry').innerHTML=self?fmt(self,Math.max(0,payload.position-1),true):'<span style=\"grid-column:1/-1;text-align:center\">暂无本局骨头纪录<\/span>';document.getElementById('myPosition').textContent='个人排名 · '+(payload.position?'第 '+payload.position+' 名':'尚未上榜');document.getElementById('tip').textContent=payload.message||'最高到达层数优先；同层时本局骨头数越多越靠前';});\ndocument.querySelector('.back').addEventListener('click',()=>parent.postMessage({type:'next100-rank-back'},'*'));\nlet currentMode='hard';\nconst switchBtn=document.getElementById('modeSwitch');\nfunction drawMode(){\n const hard=currentMode==='hard';\n switchBtn.textContent=hard?'普通':'困难';\n switchBtn.setAttribute('aria-label',hard?'切换到普通模式':'切换到困难模式');\n document.getElementById('rankTitle').textContent=hard?'排行榜・困难':'排行榜・普通';\n document.getElementById('modeIndicator').textContent=hard?'✦ 困难模式排行榜 ✦':'✦ 普通模式排行榜 ✦';\n parent.postMessage({type:'next100-rank-mode',mode:currentMode},'*');\n}\nswitchBtn.addEventListener('click',()=>{currentMode=currentMode==='hard'?'normal':'hard';drawMode()});\ndocument.getElementById('nicknameEdit').addEventListener('click',()=>parent.postMessage({type:'next100-rank-edit-nickname'},'*'));\ndrawMode();\n<\/script><\/body><\/html>";
+// Hard leaderboard uses a dedicated optional Supabase table; normal mode table remains untouched.
+function hardLocalRow(){
+ const r=readHardRecord();
+ return r.bestFloor?{player_id:MY_PLAYER_ID,nickname:displayName(),best_floor:r.bestFloor,
+ best_bones:r.bestBones,character:r.character,achieved_at:r.date||new Date().toISOString()}:null;
+}
+async function submitHardBest(){
+ if(!cloudConfig())return;
+ const record=hardLocalRow();if(!record)return;
+ await getCloudToken();
+ const uid=cloudSession.user_id;if(!uid)throw Error('无法取得匿名玩家身份');
+ const endpoint='/rest/v1/next100_hard_leaderboard';
+ const rows=await cloudRequest(endpoint+'?select=best_floor,best_bones,achieved_at&user_id=eq.'+encodeURIComponent(uid),{},true);
+ const old=rows?.[0];
+ if(old&&(Number(old.best_floor)>record.best_floor||
+  (Number(old.best_floor)===record.best_floor&&Number(old.best_bones)>=record.best_bones)))return;
+ await cloudRequest(endpoint+'?on_conflict=user_id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},
+ body:JSON.stringify({user_id:uid,...record})},true);
+}
+function hardRankPayload(rows,message){
+ const local=hardLocalRow();const set=Array.isArray(rows)?rows.slice():[];
+ if(local&&!set.some(r=>r.player_id===MY_PLAYER_ID))set.push(local);
+ set.sort((a,b)=>Number(b.best_floor)-Number(a.best_floor)||Number(b.best_bones)-Number(a.best_bones)||String(a.achieved_at||'').localeCompare(String(b.achieved_at||'')));
+ const seen=new Set(),unique=set.filter(r=>{const id=String(r.player_id||'').trim();if(!id)return true;if(seen.has(id))return false;seen.add(id);return true});
+ const pos=unique.findIndex(r=>r.player_id===MY_PLAYER_ID);
+ return {type:'next100-rank-data',rows:unique.slice(0,20),self:pos>=0?unique[pos]:local,position:pos>=0?pos+1:0,message};
+}
 function rankPayload(rows,message){
  const mine=bestRunRecord();const local=mine?{player_id:MY_PLAYER_ID,nickname:displayName(),best_floor:mine.floor,best_bones:mine.bones,character:mine.character,achieved_at:mine.date}:null;
  // On an unconfigured client, show only its own verified run; no invented cloud players.
@@ -985,26 +1137,53 @@ function rankPayload(rows,message){
  const pos=unique.findIndex(r=>r.player_id===MY_PLAYER_ID);
  return {type:'next100-rank-data',rows:unique.slice(0,20),self:pos>=0?unique[pos]:local,position:pos>=0?pos+1:0,message};
 }
+let rankMode='hard',rankLoadSeq=0;
 async function leaderboard(){
- mode='leaderboard';hidePlay();overlay.className='rank-book-overlay';overlay.classList.remove('hidden');
- const f=document.createElement('iframe');f.id='rank-book-frame';f.setAttribute('title','月灿排行榜');f.setAttribute('sandbox','allow-scripts');
- panel.replaceChildren(f);
- const profile=document.createElement('button');profile.className='rank-profile-settings';profile.type='button';profile.textContent='✎ 修改昵称';profile.onclick=editRankNickname;overlay.appendChild(profile);
- const send=(rows,msg)=>{if(mode==='leaderboard'&&f.isConnected&&f.contentWindow)f.contentWindow.postMessage(rankPayload(rows,msg+legacyBestNotice()),'*')};
- f.addEventListener('load',()=>send([],cloudConfig()?'正在获取云端成绩…':'云端尚未配置完成 · 当前展示本地最佳成绩'));
+ mode='leaderboard';rankMode='hard';hidePlay();overlay.className='rank-book-overlay';overlay.classList.remove('hidden');
+ document.querySelectorAll('.rank-profile-settings,.rank-cloud-settings').forEach(x=>x.remove());
+ const f=document.createElement('iframe');f.id='rank-book-frame';f.setAttribute('title','双模式排行榜');
+ f.setAttribute('sandbox','allow-scripts');panel.replaceChildren(f);
  f.srcdoc=RANK_BOOK_HTML;
+}
+async function loadRankMode(modeName){
+ if(mode!=='leaderboard')return;
+ const f=document.getElementById('rank-book-frame');if(!f||!f.contentWindow)return;
+ const seq=++rankLoadSeq;
+ const send=(payload)=>{if(mode==='leaderboard'&&rankMode===modeName&&seq===rankLoadSeq&&f.isConnected)
+  f.contentWindow.postMessage(payload,'*')};
+ if(modeName==='hard'){
+  send(hardRankPayload([],cloudConfig()?'正在获取困难模式成绩…':'困难模式本地纪录 · 尚未连接云端'));
+  if(!cloudConfig())return;
+  try{
+   await submitHardBest();
+   const rows=await cloudRequest('/rest/v1/next100_hard_leaderboard?select=player_id,nickname,best_floor,best_bones,character,achieved_at&order=best_floor.desc,best_bones.desc,achieved_at.asc&limit=1000',{},true);
+   send(hardRankPayload(rows,'困难模式云端排行榜 · 前20名 + 我的最佳成绩'));
+  }catch(e){send(hardRankPayload([],'困难模式云端表尚未启用／连接失败 · 当前显示本地纪录'))}
+  return;
+ }
+ send(rankPayload([],cloudConfig()?'正在获取普通模式成绩…':'普通模式本地成绩 · 云端尚未配置'));
  if(!cloudConfig())return;
  try{
   await submitBest();
-  const all=await cloudRequest('/rest/v1/next100_bone_leaderboard?select=player_id,nickname,best_floor,best_bones,character,achieved_at&order=best_floor.desc,best_bones.desc,achieved_at.asc&limit=1000',{},true);
-  send(all,'云端共享排行榜 · 前20名 + 我的最佳成绩');
- }catch(e){send([],'云端连接失败：'+e.message+' · 已显示本地纪录')}
+  const rows=await cloudRequest('/rest/v1/next100_bone_leaderboard?select=player_id,nickname,best_floor,best_bones,character,achieved_at&order=best_floor.desc,best_bones.desc,achieved_at.asc&limit=1000',{},true);
+  send(rankPayload(rows,'普通模式云端排行榜 · 前20名 + 我的最佳成绩'+legacyBestNotice()));
+ }catch(e){send(rankPayload([],'普通模式云端连接失败 · 已显示本地纪录'))}
 }
+window.addEventListener('message',e=>{
+ if(mode!=='leaderboard'||!e.data)return;
+ const f=document.getElementById('rank-book-frame');if(!f||e.source!==f.contentWindow)return;
+ if(e.data.type==='next100-rank-mode'&&(e.data.mode==='hard'||e.data.mode==='normal')){
+  rankMode=e.data.mode;loadRankMode(rankMode);
+ }else if(e.data.type==='next100-rank-edit-nickname')editRankNickname();
+});
 window.addEventListener('message',e=>{if(!e.data||e.data.type!=='next100-rank-back'||mode!=='leaderboard')return;const f=document.getElementById('rank-book-frame');if(f&&e.source===f.contentWindow)menu()});
 function localBestHtml(){const best=bestRunRecord();return best?`<p class="sub">本地最高：第 ${best.floor} 层 · 🦴${best.bones}</p>`:'<p class="sub">暂无新版当局骨头纪录</p>'}
 // Achievement book V6 is embedded without changing the approved original artwork.
-const ACH_BOOK_HTML = "<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,viewport-fit=cover\"><meta name=\"theme-color\" content=\"#173e72\"><title>下一百层 · 月灿成就册 · V6扩展滚动版</title>\n<style>\n:root{--navy:#163b6c;--blue:#35679a;--gold:#c9a262;--ivory:#fffbef;--ink:#294e75}*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:'Microsoft YaHei','PingFang SC',sans-serif;background:radial-gradient(ellipse at 50% 35%,#41688f,#101f40 72%);color:var(--ink)}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #dfa94a;outline-offset:3px}.shell{width:min(100%,540px);height:100dvh;min-height:420px;position:relative;display:flex;flex-direction:column;isolation:isolate;margin:auto;overflow:hidden;background:linear-gradient(175deg,#6fafe1 0%,#c5e6fc 28%,#eaf5ff 55%,#dbeef9 100%);box-shadow:0 0 75px #09152eb3}.shell:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.9;background:radial-gradient(circle at 82% 17%,#fffbe8 0 42px,#e7f8ffb0 43px 66px,transparent 115px),radial-gradient(circle at 15% 21%,#fffd 0 2px,transparent 3px),radial-gradient(circle at 65% 33%,#fff 0 2px,transparent 3px),radial-gradient(circle at 91% 45%,#fff 0 2px,transparent 3px),radial-gradient(circle at 24% 49%,#fff 0 2px,transparent 3px),linear-gradient(160deg,transparent 40%,#f5faff60 85%)}.shell:after{content:'';position:absolute;bottom:-40px;left:-15%;width:130%;height:260px;z-index:-1;opacity:.75;background:radial-gradient(ellipse at 15% 90%,#fff 0 24%,transparent 25%),radial-gradient(ellipse at 60% 100%,#fff 0 33%,transparent 34%),radial-gradient(ellipse at 96% 92%,#fff 0 28%,transparent 29%);pointer-events:none}\n.head{position:relative;flex:none;padding:calc(env(safe-area-inset-top) + 14px) 16px 13px;background:linear-gradient(180deg,#133f77ef 0%,#3478b0eb 74%,#7fb7ddc9 100%);border-bottom:2px solid #e7c278;box-shadow:0 5px 20px #174f8248;color:#fff}.head:after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#fff7c5,transparent)}.headtop{display:grid;grid-template-columns:58px 1fr 58px;align-items:center;min-height:42px}.back{height:33px;border:1px solid #f4d493ba;color:#fff7df;background:#174f83a6;border-radius:11px;box-shadow:inset 0 0 0 1px #ffffff2e;font-size:12px}.back:active{transform:scale(.96)}.headmark{text-align:center;font-size:12px;color:#f9df9d;letter-spacing:7px}.bookicon{margin:auto;text-align:center;color:#ffebad;font-size:20px;line-height:1}.heading{margin:1px 0 0;text-align:center;font-size:clamp(23px,6vw,32px);font-weight:900;letter-spacing:3px;color:#fffef5;text-shadow:0 2px 0 #b48b47,0 4px 8px #103c71,0 0 18px #dbf6ff}.sub{text-align:center;margin:6px 0 12px;font-size:11px;letter-spacing:1.5px;color:#deeffe}.progress{border:1px solid #f6deb1cc;background:#f7fbffde;box-shadow:inset 0 0 0 2px #fff8ef,0 4px 10px #173a6440;border-radius:15px;padding:10px 14px 9px;color:#3b628a}.progressline{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:12px;font-weight:700}.progressline strong{font-size:18px;color:#b57b29}.track{margin-top:7px;height:7px;background:#cddceb;border-radius:99px;border:1px solid #aec1d2;overflow:hidden}.fill{height:100%;width:37.5%;background:linear-gradient(90deg,#f6df9d,#c99346,#f7df9a);border-radius:99px;transition:width .3s}.caption{font-size:10px;color:#7790aa;margin-top:6px;text-align:center}\n.list{overflow-y:auto;min-height:0;flex:1;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#8cbbd6 transparent;padding:16px 13px calc(30px + env(safe-area-inset-bottom))}.section{display:flex;align-items:center;gap:10px;color:#4372a0;font-size:12px;letter-spacing:2px;font-weight:bold;padding:3px 2px 10px}.section:after{content:'';height:1px;background:linear-gradient(90deg,#b59a60,transparent);flex:1}.card{display:flex;align-items:center;gap:10px;min-height:128px;margin-bottom:12px;padding:9px 13px 9px 6px;border:1.5px solid #cfa969;border-radius:16px;background:linear-gradient(110deg,#fffef6f7,#f5fbffe8 47%,#dfedfbf2);box-shadow:0 5px 13px #28538027,inset 0 0 0 3px #ffffffa8;position:relative;overflow:hidden}.card:before{content:'✧';position:absolute;right:13px;top:7px;color:#cfb47e;font-size:15px}.card:after{content:'';position:absolute;left:15px;right:15px;top:0;height:1px;background:linear-gradient(90deg,transparent,#fff,transparent)}.card.locked{border-color:#a6b3c3;background:linear-gradient(110deg,#f0f4f7e8,#e4edf5d9)}.badgepic{width:114px;height:114px;flex:0 0 114px;object-fit:contain;filter:drop-shadow(0 4px 3px #2e547c37)}.locked .badgepic{filter:grayscale(1) brightness(.83) opacity(.65)}.copy{min-width:0;flex:1;position:relative}.name{font-size:18px;font-weight:900;color:#1d568f;letter-spacing:1px;line-height:1.4;display:flex;align-items:center;gap:5px}.locked .name{color:#718397}.state{font-size:10px;letter-spacing:0;border-radius:99px;white-space:nowrap;padding:2px 5px;color:#a6772c;background:#fff2d3;border:1px solid #d9bb7d}.locked .state{color:#7c8ca2;background:#e4eaf0;border-color:#c1cad5}.condition{color:#a27434;font-size:11px;line-height:1.5;margin-top:6px}.locked .condition{color:#8a96a7}.description{font-size:11px;line-height:1.65;margin-top:8px;color:#627e98}.locked .description{color:#8997a7}.closing{font-size:11px;text-align:center;color:#688bb0;padding:10px 5px 4px;letter-spacing:1px}.footstar{text-align:center;color:#c69e5d;font-size:17px}.footerline{border-top:1px solid #f8f4e7ab;padding:7px;text-align:center;font-size:10px;color:#678caf;background:#edf8ff94}\n@media(max-width:360px){.card{gap:5px;padding-right:8px}.badgepic{width:96px;height:96px;flex-basis:96px}.name{font-size:16px}.description{font-size:10px}.card{min-height:113px}.head{padding-left:10px;padding-right:10px}}\n@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}\n\n/* V3: 月灿成就册 · 云端幻想像素 × 深蓝金框 */\n:root{--navy:#153561;--blue:#27679c;--gold:#f1cb76;--ink:#e9f2ff}\nbody{font-family:'Microsoft YaHei','PingFang SC',system-ui,sans-serif;background:#142847;color:var(--ink)}\n.shell{background:#8bbddd url(\"assets/img_31cf0255f954c7e3.svg\") center / 100% 100% no-repeat;box-shadow:0 0 0 4px #102a52,0 0 0 7px #cda963,0 22px 90px #060f22}\n.shell:before,.shell:after{display:none}\n.head{padding:calc(env(safe-area-inset-top) + 12px) 12px 12px;background:linear-gradient(180deg,#18355eeF 0%,#215384f5 100%);border-bottom:4px solid #e7bf75;box-shadow:inset 0 -5px #102849,0 6px 0 #11305077;color:#fff}\n.head:after{bottom:-9px;height:3px;background:repeating-linear-gradient(90deg,#ffe9a8 0 8px,#c09049 8px 12px,#193f71 12px 16px)}\n.headtop{grid-template-columns:76px 1fr 46px;min-height:38px}\n.back{height:34px;border:2px solid #e1ba75;background:#225587;color:#fff3ce;border-radius:0;box-shadow:inset 0 0 0 2px #345e8c,3px 3px 0 #102745;font-size:12px;font-weight:800}\n.back:active{transform:translate(2px,2px);box-shadow:inset 0 0 0 2px #345e8c,1px 1px 0 #102745}\n.headmark{letter-spacing:5px;color:#ffe2a2}\n.heading{font-size:clamp(23px,6vw,31px);letter-spacing:3px;color:#fff5c6;text-shadow:2px 2px 0 #956c33,4px 4px 0 #0e3159,-1px -1px 0 #fff,0 0 9px #a1d7ff;margin:2px 0 0}\n.sub{font-size:11px;color:#d8eafa;letter-spacing:1px;margin:5px 0 12px}\n.progress{border:3px solid #e6bd70;border-radius:0;background:#102f59;box-shadow:inset 0 0 0 3px #31619a,4px 4px 0 #0e294d;padding:10px 12px 11px;color:#e4ecfb}\n.progressline{font-size:12px}.progressline strong{color:#ffe29a;font-size:18px}\n.track{height:12px;margin-top:9px;border:2px solid #99bbe0;border-radius:0;background:repeating-linear-gradient(90deg,#2b5280 0 calc(12.5% - 2px),#102a4d calc(12.5% - 2px) 12.5%);box-shadow:inset 0 2px #172f52}\n.fill{background:repeating-linear-gradient(90deg,#f8d988 0 calc(33.333% - 3px),#bd8745 calc(33.333% - 3px) 33.333%);border-radius:0;box-shadow:inset 0 2px #fff4ba}\n.tabs{gap:6px;margin-top:11px;flex-wrap:wrap}\n.tabs button{border:2px solid #8ab7da;border-radius:0;background:#153e70;color:#e5f1ff;padding:6px 9px;font-weight:700;font-size:10px;box-shadow:2px 2px 0 #0e2647}\n.tabs button.current{border-color:#f6d38b;background:#f3d18c;color:#15345e;box-shadow:2px 2px 0 #8a6331}\n.caption{font-size:10px;color:#bddeec;margin-top:7px}\n.list{padding:17px 12px calc(35px + env(safe-area-inset-bottom));scrollbar-color:#dbb66c #2d6798;image-rendering:auto}\n.section{font-size:12px;color:#123b68;letter-spacing:2px;padding:5px 4px 11px;text-shadow:1px 1px 0 #fff5d7}\n.section:after{height:3px;background:repeating-linear-gradient(90deg,#d6a85d 0 14px,#fff2c7 14px 18px,transparent 18px 23px)}\n.card{border:3px solid #edc379;border-radius:0;gap:9px;min-height:128px;margin-bottom:13px;padding:8px 10px 8px 5px;background:linear-gradient(120deg,#183e71f5,#24558bfa 65%,#1a477bf7);box-shadow:inset 0 0 0 3px #4775a1,0 0 0 2px #153b65,5px 5px 0 #0c315a80;clip-path:polygon(9px 0,calc(100% - 9px) 0,calc(100% - 9px) 5px,100% 5px,100% calc(100% - 8px),calc(100% - 8px) calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 8px),0 calc(100% - 8px),0 8px,9px 8px)}\n.card:before{content:'✦';font-size:13px;color:#e8c478;right:12px;top:9px}\n.card:after{left:8px;right:8px;top:4px;height:2px;background:repeating-linear-gradient(90deg,#7bb4e2 0 12px,transparent 12px 17px)}\n.card.locked{background:linear-gradient(120deg,#34485feF,#364d67f5);border-color:#8c9aae;box-shadow:inset 0 0 0 3px #526b86,0 0 0 2px #24415d,5px 5px 0 #20314988}\n.badgepic{width:110px;height:110px;flex:0 0 110px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(2px 4px 0 #0a244e82)}\n.locked .badgepic{filter:grayscale(1) brightness(.64) opacity(.78)}\n.name{color:#fff1bd;font-size:18px;line-height:1.45;letter-spacing:.7px;text-shadow:2px 2px 0 #0b305c}\n.locked .name{color:#c4cbd7}\n.state{border:1px solid #eac780;border-radius:0;background:#946c30;color:#fff9d5;font-size:9px;padding:2px 4px;text-shadow:none}\n.locked .state{border-color:#8c98a8;background:#394b60;color:#cad3df}\n.condition{color:#ffe3a3;font-size:11px;margin-top:5px}\n.locked .condition{color:#bdcbd9}\n.description{font-size:11px;color:#d3e6fa;line-height:1.65;margin-top:7px}\n.locked .description{color:#aebdcc}\n.closing{color:#15385c;text-shadow:1px 1px #f4fbff;font-weight:800}\n.footstar{color:#d1a45a;text-shadow:1px 1px #fff}\n.footerline{background:#153861;color:#d3e9ff;border-top:3px solid #e4bd73;padding:8px}\n@media(max-width:360px){.card{min-height:111px;padding:8px 7px 8px 2px;gap:3px}.badgepic{width:91px;height:91px;flex-basis:91px}.name{font-size:15px}.description{font-size:10px}.state{font-size:8px}.head{padding-left:9px;padding-right:9px}}\n\n/* V4: 用户定稿的蓝色像素云海背景及高对比度分类标题 */\n.list{\n  background-image:linear-gradient(180deg,rgba(9,38,77,.15),rgba(9,40,81,.20)),url(\"assets/img_885ab51ef41812be.png\");\n  background-repeat:no-repeat;\n  background-size:cover;\n  background-position:center top;\n  background-color:#6cb4e8;\n}\n.section{\n  display:flex;\n  align-items:center;\n  justify-content:center;\n  width:100%;\n  min-height:43px;\n  margin:5px 0 15px;\n  padding:9px 12px;\n  background:#173d70ee;\n  color:#fff2c8;\n  border:3px solid #dcb96e;\n  border-radius:0;\n  box-shadow:inset 0 0 0 2px #436b99,3px 3px 0 #10294ccc;\n  font-size:clamp(14px,3.8vw,17px);\n  font-weight:900;\n  letter-spacing:2px;\n  line-height:1.4;\n  text-shadow:1px 1px 0 #092b50,-1px -1px 0 #092b50,0 1px 0 #092b50;\n}\n.section::before{content:'✦';font-size:11px;color:#f4d58b;margin-right:8px;flex:none}\n.section::after{content:'✦';display:block;height:auto;background:none;flex:none;font-size:11px;color:#f4d58b;margin-left:8px}\n@media(max-width:360px){.section{font-size:14px;letter-spacing:1px}}\n</style></head><body><div class=\"shell\"><header class=\"head\"><div class=\"headtop\"><button class=\"back\" id=\"back\" aria-label=\"返回\">❮ 返回</button><div class=\"headmark\">✧ ✦ ✧</div><div class=\"bookicon\">☾ ✦</div></div><h1 class=\"heading\">月灿成就册</h1><p class=\"sub\">每一段旅途，都值得闪闪发光</p><div class=\"progress\" title=\"独立预览：成就与累计数字为演示数据，正式版接入游戏存档\"><div class=\"progressline\"><span>✦ 星光收藏进度</span><span>已解锁 <strong id=\"done\">3</strong> / 8</span></div><div class=\"track\"><div class=\"fill\" id=\"fill\"></div></div></div></header><main class=\"list\" id=\"list\" tabindex=\"0\"></main><div class=\"footerline\">✧ 下一百层 · 月灿旅途 ✧</div></div>\n<script>\nconst achievements=[{\"name\": \"月下初逢\", \"condition\": \"首次到达20层\", \"description\": \"故事从月光下开始\", \"group\": \"章节旅程\", \"source\": \"assets/img_a59a942efbfd9992.png\"}, {\"name\": \"灿然心动\", \"condition\": \"首次到达40层\", \"description\": \"从相遇到悄悄心动\", \"group\": \"章节旅程\", \"source\": \"assets/img_fb7830011127e4e4.png\"}, {\"name\": \"星月相映\", \"condition\": \"首次到达60层\", \"description\": \"月亮与星光开始彼此照亮\", \"group\": \"章节旅程\", \"source\": \"assets/img_f8b894d11317b38d.png\"}, {\"name\": \"双向奔赴\", \"condition\": \"首次到达80层\", \"description\": \"距离终点越来越近，心也越来越近\", \"group\": \"章节旅程\", \"source\": \"assets/img_198ab8b1fb667999.png\"}, {\"name\": \"星月灿烂\", \"condition\": \"首次通关100层\", \"description\": \"终于抵达属于两个人的圆满\", \"group\": \"章节旅程\", \"source\": \"assets/img_d5880e6e9840573d.png\"}, {\"name\": \"狗毛上头\", \"condition\": \"累计挑战50次\", \"description\": \"狗毛的坚持，永远不认输\", \"group\": \"狗毛的坚持\", \"source\": \"assets/img_8c0679d152a5f641.png\"}, {\"name\": \"为爱发电\", \"condition\": \"累计挑战100次\", \"description\": \"为了好朋狗，再来一百次也愿意\", \"group\": \"狗毛的坚持\", \"source\": \"assets/img_faa420a73e89ac12.png\"}, {\"name\": \"狗毛认证\", \"condition\": \"累计收集50个狗骨头\", \"description\": \"恭喜成为官方认证的资深狗毛\", \"group\": \"狗毛收藏家\", \"source\": \"assets/img_9bb5e3f614e4fafd.png\"}];\nlet unlockedCount=0; let achievementUnlocked={};\n// 独立美术预览的模拟进度；正式游戏整合时需从真实存档赋值。\nlet achievementProgress={attempts:0,bones:0};\nfunction completedProgress(value,max){return Math.min(max,Math.max(0,Math.floor(Number(value)||0)))+'/'+max}\n// 对外预留更新接口：window.setAchievementProgress({attempts:...,bones:...})\nwindow.setAchievementProgress=function(next){\n if(next&&Number.isFinite(Number(next.attempts))) achievementProgress.attempts=Math.max(0,Math.floor(Number(next.attempts)));\n if(next&&Number.isFinite(Number(next.bones))) achievementProgress.bones=Math.max(0,Math.floor(Number(next.bones)));\n const previousTop=container.scrollTop;render();container.scrollTop=previousTop;\n};\nconst container=document.getElementById('list');\nfunction render(){let currentGroup='';container.innerHTML='';achievements.forEach((a,i)=>{if(a.group!==currentGroup){currentGroup=a.group;const label=document.createElement('div');label.className='section';label.textContent='✦ '+currentGroup;container.appendChild(label)}const unlocked=!!achievementUnlocked[a.name];const card=document.createElement('article');card.className='card'+(unlocked?'':' locked');const pic=document.createElement('img');pic.src=a.source;pic.alt=a.name+'徽章';pic.className='badgepic';const copy=document.createElement('div');copy.className='copy';const name=document.createElement('div');name.className='name';name.textContent=a.name;const state=document.createElement('span');state.className='state';state.textContent=unlocked?'已解锁':'未解锁';name.appendChild(state);const condition=document.createElement('div');condition.className='condition';const cumulativeLimit= a.name==='狗毛上头'?50:a.name==='为爱发电'?100:a.name==='狗毛认证'?50:null;\nconst actualValue=a.name==='狗毛认证'?achievementProgress.bones:achievementProgress.attempts;\ncondition.textContent='达成条件 · '+a.condition+(cumulativeLimit!==null?'（'+completedProgress(actualValue,cumulativeLimit)+'）':'');const desc=document.createElement('div');desc.className='description';desc.textContent=a.description;copy.append(name,condition,desc);card.append(pic,copy);container.appendChild(card)});const ending=document.createElement('div');ending.className='closing';ending.textContent='愿星月相伴，下一百层也一起出发';container.appendChild(ending);const symbol=document.createElement('div');symbol.className='footstar';symbol.textContent='✦ ☾ ✧';container.appendChild(symbol);document.getElementById('done').textContent=unlockedCount;document.getElementById('fill').style.width=(unlockedCount/8*100)+'%';}\ndocument.getElementById('back').addEventListener('click',()=>parent.postMessage({type:'next100-ach-back'},'*'));\nwindow.addEventListener('message',e=>{if(e.source!==parent||!e.data||e.data.type!=='next100-ach-state')return;\n const d=e.data; achievementUnlocked=d.unlocked||{}; achievementProgress={attempts:Math.max(0,Number(d.attempts)||0),bones:Math.max(0,Number(d.bones)||0)};\n unlockedCount=Object.values(achievementUnlocked).filter(Boolean).length;render();});render();\n<\/script></body></html>";
+const ACH_BOOK_HTML = "<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,viewport-fit=cover\"><meta name=\"theme-color\" content=\"#173e72\"><title>下一百层 · 月灿成就册 · V6扩展滚动版<\/title>\n<style>\n:root{--navy:#163b6c;--blue:#35679a;--gold:#c9a262;--ivory:#fffbef;--ink:#294e75}*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:'Microsoft YaHei','PingFang SC',sans-serif;background:radial-gradient(ellipse at 50% 35%,#41688f,#101f40 72%);color:var(--ink)}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #dfa94a;outline-offset:3px}.shell{width:min(100%,540px);height:100dvh;min-height:420px;position:relative;display:flex;flex-direction:column;isolation:isolate;margin:auto;overflow:hidden;background:linear-gradient(175deg,#6fafe1 0%,#c5e6fc 28%,#eaf5ff 55%,#dbeef9 100%);box-shadow:0 0 75px #09152eb3}.shell:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.9;background:radial-gradient(circle at 82% 17%,#fffbe8 0 42px,#e7f8ffb0 43px 66px,transparent 115px),radial-gradient(circle at 15% 21%,#fffd 0 2px,transparent 3px),radial-gradient(circle at 65% 33%,#fff 0 2px,transparent 3px),radial-gradient(circle at 91% 45%,#fff 0 2px,transparent 3px),radial-gradient(circle at 24% 49%,#fff 0 2px,transparent 3px),linear-gradient(160deg,transparent 40%,#f5faff60 85%)}.shell:after{content:'';position:absolute;bottom:-40px;left:-15%;width:130%;height:260px;z-index:-1;opacity:.75;background:radial-gradient(ellipse at 15% 90%,#fff 0 24%,transparent 25%),radial-gradient(ellipse at 60% 100%,#fff 0 33%,transparent 34%),radial-gradient(ellipse at 96% 92%,#fff 0 28%,transparent 29%);pointer-events:none}\n.head{position:relative;flex:none;padding:calc(env(safe-area-inset-top) + 14px) 16px 13px;background:linear-gradient(180deg,#133f77ef 0%,#3478b0eb 74%,#7fb7ddc9 100%);border-bottom:2px solid #e7c278;box-shadow:0 5px 20px #174f8248;color:#fff}.head:after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#fff7c5,transparent)}.headtop{display:grid;grid-template-columns:58px 1fr 58px;align-items:center;min-height:42px}.back{height:33px;border:1px solid #f4d493ba;color:#fff7df;background:#174f83a6;border-radius:11px;box-shadow:inset 0 0 0 1px #ffffff2e;font-size:12px}.back:active{transform:scale(.96)}.headmark{text-align:center;font-size:12px;color:#f9df9d;letter-spacing:7px}.bookicon{margin:auto;text-align:center;color:#ffebad;font-size:20px;line-height:1}.heading{margin:1px 0 0;text-align:center;font-size:clamp(23px,6vw,32px);font-weight:900;letter-spacing:3px;color:#fffef5;text-shadow:0 2px 0 #b48b47,0 4px 8px #103c71,0 0 18px #dbf6ff}.sub{text-align:center;margin:6px 0 12px;font-size:11px;letter-spacing:1.5px;color:#deeffe}.progress{border:1px solid #f6deb1cc;background:#f7fbffde;box-shadow:inset 0 0 0 2px #fff8ef,0 4px 10px #173a6440;border-radius:15px;padding:10px 14px 9px;color:#3b628a}.progressline{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:12px;font-weight:700}.progressline strong{font-size:18px;color:#b57b29}.track{margin-top:7px;height:7px;background:#cddceb;border-radius:99px;border:1px solid #aec1d2;overflow:hidden}.fill{height:100%;width:37.5%;background:linear-gradient(90deg,#f6df9d,#c99346,#f7df9a);border-radius:99px;transition:width .3s}.caption{font-size:10px;color:#7790aa;margin-top:6px;text-align:center}\n.list{overflow-y:auto;min-height:0;flex:1;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#8cbbd6 transparent;padding:16px 13px calc(30px + env(safe-area-inset-bottom))}.section{display:flex;align-items:center;gap:10px;color:#4372a0;font-size:12px;letter-spacing:2px;font-weight:bold;padding:3px 2px 10px}.section:after{content:'';height:1px;background:linear-gradient(90deg,#b59a60,transparent);flex:1}.card{display:flex;align-items:center;gap:10px;min-height:128px;margin-bottom:12px;padding:9px 13px 9px 6px;border:1.5px solid #cfa969;border-radius:16px;background:linear-gradient(110deg,#fffef6f7,#f5fbffe8 47%,#dfedfbf2);box-shadow:0 5px 13px #28538027,inset 0 0 0 3px #ffffffa8;position:relative;overflow:hidden}.card:before{content:'✧';position:absolute;right:13px;top:7px;color:#cfb47e;font-size:15px}.card:after{content:'';position:absolute;left:15px;right:15px;top:0;height:1px;background:linear-gradient(90deg,transparent,#fff,transparent)}.card.locked{border-color:#a6b3c3;background:linear-gradient(110deg,#f0f4f7e8,#e4edf5d9)}.badgepic{width:114px;height:114px;flex:0 0 114px;object-fit:contain;filter:drop-shadow(0 4px 3px #2e547c37)}.locked .badgepic{filter:grayscale(1) brightness(.83) opacity(.65)}.copy{min-width:0;flex:1;position:relative}.name{font-size:18px;font-weight:900;color:#1d568f;letter-spacing:1px;line-height:1.4;display:flex;align-items:center;gap:5px}.locked .name{color:#718397}.state{font-size:10px;letter-spacing:0;border-radius:99px;white-space:nowrap;padding:2px 5px;color:#a6772c;background:#fff2d3;border:1px solid #d9bb7d}.locked .state{color:#7c8ca2;background:#e4eaf0;border-color:#c1cad5}.condition{color:#a27434;font-size:11px;line-height:1.5;margin-top:6px}.locked .condition{color:#8a96a7}.description{font-size:11px;line-height:1.65;margin-top:8px;color:#627e98}.locked .description{color:#8997a7}.closing{font-size:11px;text-align:center;color:#688bb0;padding:10px 5px 4px;letter-spacing:1px}.footstar{text-align:center;color:#c69e5d;font-size:17px}.footerline{border-top:1px solid #f8f4e7ab;padding:7px;text-align:center;font-size:10px;color:#678caf;background:#edf8ff94}\n@media(max-width:360px){.card{gap:5px;padding-right:8px}.badgepic{width:96px;height:96px;flex-basis:96px}.name{font-size:16px}.description{font-size:10px}.card{min-height:113px}.head{padding-left:10px;padding-right:10px}}\n@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}\n\n/* V3: 月灿成就册 · 云端幻想像素 × 深蓝金框 */\n:root{--navy:#153561;--blue:#27679c;--gold:#f1cb76;--ink:#e9f2ff}\nbody{font-family:'Microsoft YaHei','PingFang SC',system-ui,sans-serif;background:#142847;color:var(--ink)}\n.shell{background:#8bbddd url(\"assets/img_31cf0255f954c7e3.svg\") center / 100% 100% no-repeat;box-shadow:0 0 0 4px #102a52,0 0 0 7px #cda963,0 22px 90px #060f22}\n.shell:before,.shell:after{display:none}\n.head{padding:calc(env(safe-area-inset-top) + 12px) 12px 12px;background:linear-gradient(180deg,#18355eeF 0%,#215384f5 100%);border-bottom:4px solid #e7bf75;box-shadow:inset 0 -5px #102849,0 6px 0 #11305077;color:#fff}\n.head:after{bottom:-9px;height:3px;background:repeating-linear-gradient(90deg,#ffe9a8 0 8px,#c09049 8px 12px,#193f71 12px 16px)}\n.headtop{grid-template-columns:76px 1fr 46px;min-height:38px}\n.back{height:34px;border:2px solid #e1ba75;background:#225587;color:#fff3ce;border-radius:0;box-shadow:inset 0 0 0 2px #345e8c,3px 3px 0 #102745;font-size:12px;font-weight:800}\n.back:active{transform:translate(2px,2px);box-shadow:inset 0 0 0 2px #345e8c,1px 1px 0 #102745}\n.headmark{letter-spacing:5px;color:#ffe2a2}\n.heading{font-size:clamp(23px,6vw,31px);letter-spacing:3px;color:#fff5c6;text-shadow:2px 2px 0 #956c33,4px 4px 0 #0e3159,-1px -1px 0 #fff,0 0 9px #a1d7ff;margin:2px 0 0}\n.sub{font-size:11px;color:#d8eafa;letter-spacing:1px;margin:5px 0 12px}\n.progress{border:3px solid #e6bd70;border-radius:0;background:#102f59;box-shadow:inset 0 0 0 3px #31619a,4px 4px 0 #0e294d;padding:10px 12px 11px;color:#e4ecfb}\n.progressline{font-size:12px}.progressline strong{color:#ffe29a;font-size:18px}\n.track{height:12px;margin-top:9px;border:2px solid #99bbe0;border-radius:0;background:repeating-linear-gradient(90deg,#2b5280 0 calc(12.5% - 2px),#102a4d calc(12.5% - 2px) 12.5%);box-shadow:inset 0 2px #172f52}\n.fill{background:repeating-linear-gradient(90deg,#f8d988 0 calc(33.333% - 3px),#bd8745 calc(33.333% - 3px) 33.333%);border-radius:0;box-shadow:inset 0 2px #fff4ba}\n.tabs{gap:6px;margin-top:11px;flex-wrap:wrap}\n.tabs button{border:2px solid #8ab7da;border-radius:0;background:#153e70;color:#e5f1ff;padding:6px 9px;font-weight:700;font-size:10px;box-shadow:2px 2px 0 #0e2647}\n.tabs button.current{border-color:#f6d38b;background:#f3d18c;color:#15345e;box-shadow:2px 2px 0 #8a6331}\n.caption{font-size:10px;color:#bddeec;margin-top:7px}\n.list{padding:17px 12px calc(35px + env(safe-area-inset-bottom));scrollbar-color:#dbb66c #2d6798;image-rendering:auto}\n.section{font-size:12px;color:#123b68;letter-spacing:2px;padding:5px 4px 11px;text-shadow:1px 1px 0 #fff5d7}\n.section:after{height:3px;background:repeating-linear-gradient(90deg,#d6a85d 0 14px,#fff2c7 14px 18px,transparent 18px 23px)}\n.card{border:3px solid #edc379;border-radius:0;gap:9px;min-height:128px;margin-bottom:13px;padding:8px 10px 8px 5px;background:linear-gradient(120deg,#183e71f5,#24558bfa 65%,#1a477bf7);box-shadow:inset 0 0 0 3px #4775a1,0 0 0 2px #153b65,5px 5px 0 #0c315a80;clip-path:polygon(9px 0,calc(100% - 9px) 0,calc(100% - 9px) 5px,100% 5px,100% calc(100% - 8px),calc(100% - 8px) calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 8px),0 calc(100% - 8px),0 8px,9px 8px)}\n.card:before{content:'✦';font-size:13px;color:#e8c478;right:12px;top:9px}\n.card:after{left:8px;right:8px;top:4px;height:2px;background:repeating-linear-gradient(90deg,#7bb4e2 0 12px,transparent 12px 17px)}\n.card.locked{background:linear-gradient(120deg,#34485feF,#364d67f5);border-color:#8c9aae;box-shadow:inset 0 0 0 3px #526b86,0 0 0 2px #24415d,5px 5px 0 #20314988}\n.badgepic{width:110px;height:110px;flex:0 0 110px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(2px 4px 0 #0a244e82)}\n.locked .badgepic{filter:grayscale(1) brightness(.64) opacity(.78)}\n.name{color:#fff1bd;font-size:18px;line-height:1.45;letter-spacing:.7px;text-shadow:2px 2px 0 #0b305c}\n.locked .name{color:#c4cbd7}\n.state{border:1px solid #eac780;border-radius:0;background:#946c30;color:#fff9d5;font-size:9px;padding:2px 4px;text-shadow:none}\n.locked .state{border-color:#8c98a8;background:#394b60;color:#cad3df}\n.condition{color:#ffe3a3;font-size:11px;margin-top:5px}\n.locked .condition{color:#bdcbd9}\n.description{font-size:11px;color:#d3e6fa;line-height:1.65;margin-top:7px}\n.locked .description{color:#aebdcc}\n.closing{color:#15385c;text-shadow:1px 1px #f4fbff;font-weight:800}\n.footstar{color:#d1a45a;text-shadow:1px 1px #fff}\n.footerline{background:#153861;color:#d3e9ff;border-top:3px solid #e4bd73;padding:8px}\n@media(max-width:360px){.card{min-height:111px;padding:8px 7px 8px 2px;gap:3px}.badgepic{width:91px;height:91px;flex-basis:91px}.name{font-size:15px}.description{font-size:10px}.state{font-size:8px}.head{padding-left:9px;padding-right:9px}}\n\n/* V4: 用户定稿的蓝色像素云海背景及高对比度分类标题 */\n.list{\n  background-image:linear-gradient(180deg,rgba(9,38,77,.15),rgba(9,40,81,.20)),url(\"assets/img_885ab51ef41812be.webp\");\n  background-repeat:no-repeat;\n  background-size:cover;\n  background-position:center top;\n  background-color:#6cb4e8;\n}\n.section{\n  display:flex;\n  align-items:center;\n  justify-content:center;\n  width:100%;\n  min-height:43px;\n  margin:5px 0 15px;\n  padding:9px 12px;\n  background:#173d70ee;\n  color:#fff2c8;\n  border:3px solid #dcb96e;\n  border-radius:0;\n  box-shadow:inset 0 0 0 2px #436b99,3px 3px 0 #10294ccc;\n  font-size:clamp(14px,3.8vw,17px);\n  font-weight:900;\n  letter-spacing:2px;\n  line-height:1.4;\n  text-shadow:1px 1px 0 #092b50,-1px -1px 0 #092b50,0 1px 0 #092b50;\n}\n.section::before{content:'✦';font-size:11px;color:#f4d58b;margin-right:8px;flex:none}\n.section::after{content:'✦';display:block;height:auto;background:none;flex:none;font-size:11px;color:#f4d58b;margin-left:8px}\n@media(max-width:360px){.section{font-size:14px;letter-spacing:1px}}\n\n.coming-badge{width:110px;height:110px;flex:0 0 110px;display:flex;align-items:center;justify-content:center;text-align:center;border:3px solid #9ba8b6;background:linear-gradient(145deg,#667487,#394b62);color:#e1e6ed;font-size:15px;font-weight:800;letter-spacing:1px;line-height:1.6;box-shadow:inset 0 0 0 4px #526176,2px 4px 0 #11263f;image-rendering:pixelated}\n.card.coming .name{color:#e1e6ee}.card.coming .condition{color:#bbc6d4}.card.coming .description{color:#a9b8cb}\n@media(max-width:360px){.coming-badge{width:91px;height:91px;flex-basis:91px;font-size:12px}}\n<\/style><\/head><body><div class=\"shell\"><header class=\"head\"><div class=\"headtop\"><button class=\"back\" id=\"back\" aria-label=\"返回\">❮ 返回<\/button><div class=\"headmark\">✧ ✦ ✧<\/div><div class=\"bookicon\">☾ ✦<\/div><\/div><h1 class=\"heading\">月灿成就册<\/h1><p class=\"sub\">每一段旅途，都值得闪闪发光<\/p><div class=\"progress\" title=\"独立预览：成就与累计数字为演示数据，正式版接入游戏存档\"><div class=\"progressline\"><span>✦ 星光收藏进度<\/span><span>已解锁 <strong id=\"done\">3<\/strong> / 8<\/span><\/div><div class=\"track\"><div class=\"fill\" id=\"fill\"><\/div><\/div><\/div><\/header><main class=\"list\" id=\"list\" tabindex=\"0\"><\/main><div class=\"footerline\">✧ 下一百层 · 月灿旅途 ✧<\/div><\/div>\n<script>\nconst achievements=[{\"name\": \"月下初逢\", \"condition\": \"首次到达20层\", \"description\": \"故事从月光下开始\", \"group\": \"章节旅程\", \"source\": \"assets/img_a59a942efbfd9992.webp\"}, {\"name\": \"灿然心动\", \"condition\": \"首次到达40层\", \"description\": \"从相遇到悄悄心动\", \"group\": \"章节旅程\", \"source\": \"assets/img_fb7830011127e4e4.webp\"}, {\"name\": \"星月相映\", \"condition\": \"首次到达60层\", \"description\": \"月亮与星光开始彼此照亮\", \"group\": \"章节旅程\", \"source\": \"assets/img_f8b894d11317b38d.webp\"}, {\"name\": \"双向奔赴\", \"condition\": \"首次到达80层\", \"description\": \"距离终点越来越近，心也越来越近\", \"group\": \"章节旅程\", \"source\": \"assets/img_198ab8b1fb667999.webp\"}, {\"name\": \"星月灿烂\", \"condition\": \"首次通关100层\", \"description\": \"终于抵达属于两个人的圆满\", \"group\": \"章节旅程\", \"source\": \"assets/img_d5880e6e9840573d.webp\"}, {\"name\": \"狗毛上头\", \"condition\": \"累计挑战50次\", \"description\": \"狗毛的坚持，永远不认输\", \"group\": \"狗毛的坚持\", \"source\": \"assets/img_8c0679d152a5f641.webp\"}, {\"name\": \"为爱发电\", \"condition\": \"累计挑战100次\", \"description\": \"为了好朋狗，再来一百次也愿意\", \"group\": \"狗毛的坚持\", \"source\": \"assets/img_faa420a73e89ac12.webp\"}, {\"name\": \"狗毛认证\", \"condition\": \"累计收集50个狗骨头\", \"description\": \"恭喜成为官方认证的资深狗毛\", \"group\": \"狗毛收藏家\", \"source\": \"assets/img_9bb5e3f614e4fafd.webp\"}];\nlet unlockedCount=0; let achievementUnlocked={};\n// 独立美术预览的模拟进度；正式游戏整合时需从真实存档赋值。\nlet achievementProgress={attempts:0,bones:0};\nfunction completedProgress(value,max){return Math.min(max,Math.max(0,Math.floor(Number(value)||0)))+'/'+max}\n// 对外预留更新接口：window.setAchievementProgress({attempts:...,bones:...})\nwindow.setAchievementProgress=function(next){\n if(next&&Number.isFinite(Number(next.attempts))) achievementProgress.attempts=Math.max(0,Math.floor(Number(next.attempts)));\n if(next&&Number.isFinite(Number(next.bones))) achievementProgress.bones=Math.max(0,Math.floor(Number(next.bones)));\n const previousTop=container.scrollTop;render();container.scrollTop=previousTop;\n};\nconst container=document.getElementById('list');\nfunction render(){let currentGroup='';container.innerHTML='';achievements.forEach((a,i)=>{if(a.group!==currentGroup){currentGroup=a.group;const label=document.createElement('div');label.className='section';label.textContent='✦ '+currentGroup;container.appendChild(label)}const unlocked=!!achievementUnlocked[a.name];const card=document.createElement('article');card.className='card'+(unlocked?'':' locked');const pic=document.createElement('img');pic.src=a.source;pic.alt=a.name+'徽章';pic.className='badgepic';const copy=document.createElement('div');copy.className='copy';const name=document.createElement('div');name.className='name';name.textContent=a.name;const state=document.createElement('span');state.className='state';state.textContent=unlocked?'已解锁':'未解锁';name.appendChild(state);const condition=document.createElement('div');condition.className='condition';const cumulativeLimit= a.name==='狗毛上头'?50:a.name==='为爱发电'?100:a.name==='狗毛认证'?50:null;\nconst actualValue=a.name==='狗毛认证'?achievementProgress.bones:achievementProgress.attempts;\ncondition.textContent='达成条件 · '+a.condition+(cumulativeLimit!==null?'（'+completedProgress(actualValue,cumulativeLimit)+'）':'');const desc=document.createElement('div');desc.className='description';desc.textContent=a.description;copy.append(name,condition,desc);card.append(pic,copy);container.appendChild(card)});// 困难模式暂不设置解锁条件，仅展示预留成就条目；不计入8枚普通勋章进度。\nconst hardSection=document.createElement('div');hardSection.className='section';hardSection.textContent='✦ 勇闯难关的狗毛';container.appendChild(hardSection);\nconst hardCard=document.createElement('article');hardCard.className='card locked coming';\nconst placeholder=document.createElement('div');placeholder.className='coming-badge';placeholder.textContent='正在\\n制作中';placeholder.style.whiteSpace='pre-line';\nconst hardCopy=document.createElement('div');hardCopy.className='copy';\nconst hardTitle=document.createElement('div');hardTitle.className='name';hardTitle.textContent='困难模式勋章';\nconst hardState=document.createElement('span');hardState.className='state';hardState.textContent='筹备中';hardTitle.appendChild(hardState);\nconst hardCondition=document.createElement('div');hardCondition.className='condition';hardCondition.textContent='达成条件 · 敬请期待';\nconst hardDescription=document.createElement('div');hardDescription.className='description';hardDescription.textContent='全新挑战的专属荣誉，正在制作中';\nhardCopy.append(hardTitle,hardCondition,hardDescription);hardCard.append(placeholder,hardCopy);container.appendChild(hardCard);\nconst ending=document.createElement('div');ending.className='closing';ending.textContent='愿星月相伴，下一百层也一起出发';container.appendChild(ending);const symbol=document.createElement('div');symbol.className='footstar';symbol.textContent='✦ ☾ ✧';container.appendChild(symbol);document.getElementById('done').textContent=unlockedCount;document.getElementById('fill').style.width=(unlockedCount/8*100)+'%';}\ndocument.getElementById('back').addEventListener('click',()=>parent.postMessage({type:'next100-ach-back'},'*'));\nwindow.addEventListener('message',e=>{if(e.source!==parent||!e.data||e.data.type!=='next100-ach-state')return;\n const d=e.data; achievementUnlocked=d.unlocked||{}; achievementProgress={attempts:Math.max(0,Number(d.attempts)||0),bones:Math.max(0,Number(d.bones)||0)};\n unlockedCount=Object.values(achievementUnlocked).filter(Boolean).length;render();});render();\n<\/script><\/body><\/html>";
 const ACHIEVEMENT_KEY='next100-achievements-v2';
+let runAchievementTracking=false;
+const runNewAchievements=new Set(); // 记录本次挑战从开始到结算的全部新解锁成就
+let achievementStartSnapshot=new Set();
 const ACHIEVEMENTS=[
  {id:'reach20',name:'月下初逢',description:'故事从月光下开始',target:20,kind:'floor'},
  {id:'reach40',name:'灿然心动',description:'从相遇到悄悄心动',target:40,kind:'floor'},
@@ -1021,14 +1200,14 @@ let achPlayCount=Math.max(readAchCounter(ACH_PLAY_KEY),Number(readRecords().tota
 let achBoneCount=readAchCounter(ACH_BONE_KEY);
 let achReachedFloor=Math.max(readAchCounter(ACH_FLOOR_KEY),Number(readRecords().bestFloor)||0);
 function saveAchCounter(key,value){try{localStorage.setItem(key,String(value))}catch(e){}}
-function countNewChallenge(){achPlayCount++;saveAchCounter(ACH_PLAY_KEY,achPlayCount);syncAchievements()}
-function countCollectedBone(){achBoneCount++;saveAchCounter(ACH_BONE_KEY,achBoneCount);syncAchievements()}
-function countReachedFloor(floor){if(floor>achReachedFloor){achReachedFloor=floor;saveAchCounter(ACH_FLOOR_KEY,floor);syncAchievements()}}
+function countNewChallenge(){if(difficulty==='hard')return;achPlayCount++;saveAchCounter(ACH_PLAY_KEY,achPlayCount);syncAchievements()}
+function countCollectedBone(){if(difficulty==='hard')return;achBoneCount++;saveAchCounter(ACH_BONE_KEY,achBoneCount);syncAchievements()}
+function countReachedFloor(floor){if(difficulty==='hard')return;if(floor>achReachedFloor){achReachedFloor=floor;saveAchCounter(ACH_FLOOR_KEY,floor);syncAchievements()}}
 function readAchievements(){try{const v=JSON.parse(localStorage.getItem(ACHIEVEMENT_KEY)||'{}');return v&&typeof v==='object'&&!Array.isArray(v)?v:{}}catch(e){return {}}}
 function achievementProgress(a,r){return a.kind==='floor'?Math.max(achReachedFloor,Number(r.bestFloor)||0):a.kind==='win'?(Number(r.wins)||0):a.kind==='bones'?achBoneCount:achPlayCount}
 function syncAchievements(){
  const r=readRecords(),saved=readAchievements(),unlocked=[];
- for(const a of ACHIEVEMENTS){if(achievementProgress(a,r)>=a.target&&!saved[a.id]){saved[a.id]=new Date().toISOString();unlocked.push(a)}}
+ for(const a of ACHIEVEMENTS){if(achievementProgress(a,r)>=a.target&&!saved[a.id]){saved[a.id]=new Date().toISOString();unlocked.push(a);if(runAchievementTracking)runNewAchievements.add(a.id)}}
  if(unlocked.length){try{localStorage.setItem(ACHIEVEMENT_KEY,JSON.stringify(saved))}catch(e){}}
  return {saved,unlocked};
 }
@@ -1052,58 +1231,82 @@ window.addEventListener('message',e=>{
  const f=document.getElementById('achievement-book-frame');if(f&&e.source===f.contentWindow)menu();
 });
 function recordSummary(){const r=readRecords();return `<p class="sub">历史最高：第 ${r.bestFloor} 层 · 已完成 ${r.total} 次挑战 · 通关 ${r.wins} 次</p>`;}
-const V186_FAIL_BG="assets/img_1a682ce1aa4dcccd.png";
-const V186_WIN_BG="assets/img_aba6857e195ae5e2.png";
-const V186_FAIL_YUE="assets/img_52b2f5efb55610a8.png";
-const V186_FAIL_CAN="assets/img_06e051fa105ca56d.png";
-const V186_WIN_YUE="assets/img_df4c9a58de07dd57.png";
-const V186_WIN_CAN="assets/img_250c87d4f73ce184.png";
-const V186_RECORD="assets/img_79a8d131f95bfc5b.png";
+const V186_FAIL_BG="assets/img_1a682ce1aa4dcccd.webp";
+
+const V186_FAIL_YUE="assets/img_52b2f5efb55610a8.webp";
+
+const V186_WIN_YUE="assets/img_df4c9a58de07dd57.webp";
+
+const V186_RECORD="assets/img_79a8d131f95bfc5b.webp";
 const FINAL190_PLATE_0='assets/img_731e7b5927d256d2.webp';
-const FINAL190_PLATE_1='assets/img_0ed859aac341f562.webp';
-const FINAL190_PLATE_2='assets/img_7b35c1f0a5dc2b8c.webp';
-const FINAL190_PLATE_3='assets/img_eab452196e23a4ed.webp';
-const FINAL190_FAIL_YUE='assets/img_213b155a7cabd19e.png';
-const FINAL190_FAIL_CAN='assets/img_0a5285c7ad659721.png';
-const FINAL190_WIN_YUE='assets/img_fb20200b52244543.png';
-const FINAL190_WIN_CAN='assets/img_748656665b09100c.png';
-const FINAL190_FAIL_BG='assets/img_80d0b295f531df3a.png';
-const FINAL190_WIN_BG='assets/img_628028e718922a57.png';
-const FINAL191_PLATE_0='assets/img_85af90332ab4de00.webp';
-const FINAL191_PLATE_1='assets/img_e8188618ceb471be.webp';
-const FINAL191_PLATE_2='assets/img_0040eb3af23c2b87.webp';
-const FINAL191_PLATE_3='assets/img_ec273f71f8ed1756.webp';
-const END_BLUE_BG="assets/img_2b96f0a630559e9c.png";
-const END_BLUE_YUE="assets/img_bf3efc9f0d3d9553.png";
-const END_BLUE_CAN="assets/img_3dfb9930e9fe1cbf.png";
-const END_RED_BG="assets/img_74906d18f49fa577.png";
-const END_RED_YUE="assets/img_df4c9a58de07dd57.png";
-const END_RED_CAN="assets/img_2b72d0cf76170a2a.png";
-const END_FAIL_TITLE="assets/img_14b3ed52df7cdf45.png";
-const END_WIN_TITLE="assets/img_6e043e38259c572f.png";
-const END_BADGE="assets/img_7fcfa1dc2d6b12fe.png";
-const END_BLUE_FRAME="assets/img_231601feeb964f87.png";
-const END_RED_FRAME="assets/img_32e6f63c3ac0457e.png";
-const END_BLUE_RETRY="assets/img_96dbe02ac9a180a4.png";
-const END_BLUE_HOME="assets/img_d9eb7cad7f55768e.png";
-const END_RED_RETRY="assets/img_b3b62cd3cfd9c5c7.png";
-const END_RED_HOME="assets/img_0f123a6f898be6b4.png";
+
+
+
+const FINAL190_FAIL_YUE='assets/img_213b155a7cabd19e.webp';
+const FINAL190_FAIL_CAN='assets/img_0a5285c7ad659721.webp';
+
+
+const FINAL190_FAIL_BG='assets/img_80d0b295f531df3a.webp';
+
+
+
+
+
+const V11_RESULT_ART={"yue0win": "assets/v11/result_张月_初始_通关.webp", "yue0fail": "assets/v11/result_张月_初始_失败.webp", "yue1win": "assets/v11/result_张月_新皮肤A_通关.webp", "yue1fail": "assets/v11/result_张月_新皮肤A_失败.webp", "can0win": "assets/v11/result_黄灿灿_初始_通关.webp", "can0fail": "assets/v11/result_黄灿灿_初始_失败.webp", "can1win": "assets/v11/result_黄灿灿_新皮肤A_通关.webp", "can1fail": "assets/v11/result_黄灿灿_新皮肤A_失败.webp"};
+const END_BLUE_BG="assets/img_2b96f0a630559e9c.webp";
+const END_BLUE_YUE="assets/img_bf3efc9f0d3d9553.webp";
+const END_BLUE_CAN="assets/img_3dfb9930e9fe1cbf.webp";
+const END_RED_BG="assets/img_74906d18f49fa577.webp";
+const END_RED_YUE="assets/img_df4c9a58de07dd57.webp";
+const END_RED_CAN="assets/img_2b72d0cf76170a2a.webp";
+const END_FAIL_TITLE="assets/img_14b3ed52df7cdf45.webp";
+const END_WIN_TITLE="assets/img_6e043e38259c572f.webp";
+const END_BADGE="assets/img_7fcfa1dc2d6b12fe.webp";
+const END_BLUE_FRAME="assets/img_231601feeb964f87.webp";
+const END_RED_FRAME="assets/img_32e6f63c3ac0457e.webp";
+const END_BLUE_RETRY="assets/img_96dbe02ac9a180a4.webp";
+const END_BLUE_HOME="assets/img_d9eb7cad7f55768e.webp";
+const END_RED_RETRY="assets/img_b3b62cd3cfd9c5c7.webp";
+const END_RED_HOME="assets/img_0f123a6f898be6b4.webp";
+const HARD_RECORD_KEY='next100-hard-local-v12';
+function readHardRecord(){
+ try{
+  const r=JSON.parse(localStorage.getItem(HARD_RECORD_KEY)||'{}');
+  return {bestFloor:Number(r.bestFloor)||0,bestBones:Number(r.bestBones)||0,
+   character:r.character==='灿'?'灿':'月',date:r.date||'',
+   wins:Number(r.wins)||0,attempts:Number(r.attempts)||0};
+ }catch(e){return {bestFloor:0,bestBones:0,character:'月',date:'',wins:0,attempts:0}}
+}
+function saveHardRecord(win){
+ const old=readHardRecord(),floor=win?100:maxFloor,bones=currentRunBones;
+ const better=floor>old.bestFloor||(floor===old.bestFloor&&bones>old.bestBones);
+ const data={...old,bestFloor:better?floor:old.bestFloor,bestBones:better?bones:old.bestBones,
+   character:better?selected:old.character,date:better?new Date().toISOString():old.date,
+   wins:old.wins+(win?1:0),attempts:old.attempts+1};
+ try{localStorage.setItem(HARD_RECORD_KEY,JSON.stringify(data))}catch(e){console.warn('困难模式本地记录无法保存',e)}
+ return data;
+}
 function finish(win,why){
  try{
-  const previousBest=readRecords().bestFloor;
-  const saved=saveResult(win);
-  if(cloudConfig())submitBest().catch(e=>console.warn('排行榜提交失败:',e));
-  const unlocked=syncAchievements().unlocked;
+  const hard=difficulty==='hard';
+  const previousBest=hard?readHardRecord().bestFloor:readRecords().bestFloor;
+  const saved=hard?saveHardRecord(win):saveResult(win);
+  if(cloudConfig())(hard?submitHardBest():submitBest()).catch(e=>console.warn('排行榜同步暂不可用:',e));
+  const achievementEnd=hard?{saved:readAchievements()}:syncAchievements();
+  const newAchievementIds=[...new Set([...runNewAchievements,...ACHIEVEMENTS.filter(a=>!achievementStartSnapshot.has(a.id)&&!!achievementEnd.saved[a.id]).map(a=>a.id)])];
+  const runUnlockCount=newAchievementIds.length;
+  console.info('[下一百层版本]',NEXT100_BUILD,'[成就统计] 开局已有:',[...achievementStartSnapshot],'本局新解锁:',newAchievementIds,'数量:',runUnlockCount);
+  runAchievementTracking=false;
   mode='result';clearInputs();hidePlay();
   const achieved=win?100:Math.max(1,maxFloor);
   const record=achieved>previousBest;
-  const best=readRecords().bestFloor;
+  const best=hard?readHardRecord().bestFloor:readRecords().bestFloor;
   const isYue=selected==='月';
   const id=win?(isYue?2:3):(isYue?0:1);
   overlay.className='result-overlay v190-result-overlay';
   const tint=win?'red':'blue';
   const back=win?END_RED_BG:END_BLUE_BG;
-  const person=win?(isYue?END_RED_YUE:END_RED_CAN):(isYue?END_BLUE_YUE:END_BLUE_CAN);
+  const person=V11_RESULT_ART[(isYue?'yue':'can')+(v11Skins[selected]||0)+(win?'win':'fail')];
   const banner=win?END_WIN_TITLE:END_FAIL_TITLE;
   const border=win?END_RED_FRAME:END_BLUE_FRAME;
   panel.innerHTML=`<div class="v190-design final-result final-${tint}" role="region" aria-label="${isYue?'张月':'黄灿灿'}${win?'通关':'失败'}结算">
@@ -1115,12 +1318,12 @@ function finish(win,why){
     <div class="final-stats" role="group" aria-label="本次挑战成绩">
        <img class="final-frame" src="${border}" alt="" draggable="false">
        <div class="final-stats-layer">
-          <div class="final-caption">本次挑战成绩</div>
+          <div class="final-caption">${hard?'困难模式 · 本次挑战成绩':'本次挑战成绩'}</div>
           <div class="final-score" aria-label="本次到达第${achieved}层">第 ${achieved} 层</div>
           <div class="final-bones">本局收集 🦴 × ${currentRunBones}</div>
           <div class="final-records">
-             <div class="final-record-row"><span>历史最高</span><b>第 ${best} 层</b></div>
-             <div class="final-record-row"><span>本次解锁成就</span><b>${unlocked.length} 个</b></div>
+             <div class="final-record-row"><span>${hard?'困难本地最高':'历史最高'}</span><b>第 ${best} 层</b></div>
+             <div class="final-record-row"><span>${hard?'困难模式纪录':'本次解锁成就'}</span><b>${hard?'仅保存在本机':runUnlockCount+' 个'}</b></div>
           </div>
        </div>
        ${record?`<img class="final-badge" src="${END_BADGE}" alt="新纪录！">`:''}
@@ -1136,9 +1339,9 @@ function finish(win,why){
   panel.innerHTML=`<h2>${win?'挑战成功！':'冒险暂告一段落'}</h2><p>第 ${win?100:maxFloor} 层</p><p>🦴 本局收集 × ${currentRunBones}</p>${button('再次挑战','start')}${button('返回首页','menu')}`;
  }
 }
-const HUD_BONE_GOLD='assets/img_dd22257e56d52626.png';
+const HUD_BONE_GOLD='assets/img_dd22257e56d52626.webp';
 const healBoneImage=new Image();healBoneImage.src=HUD_BONE_GOLD;
-const HUD_BONE_GRAY='assets/img_0a39170a134e5d75.png';
+const HUD_BONE_GRAY='assets/img_0a39170a134e5d75.webp';
 function updateHud(){
   $('floor').textContent=`第 ${maxFloor} 层`;
   const hp=Math.max(0,Math.min(3,hero?.hp??3));
@@ -1181,7 +1384,8 @@ function refreshSpriteAction(){
 }
 const CHAPTER_TITLES=['云端回廊','翠晶花庭','星象书库','月影秘廊','星核圣殿'];
 const CHAPTER_ART_DATA=['assets/img_f0954a738a212cd5.jpg','assets/img_13f2e66839057ed1.jpg','assets/img_ee52f5895378ba02.jpg','assets/img_053fb37fef96728e.jpg','assets/img_22082291a059e95d.jpg'];
-const chapterImages=CHAPTER_ART_DATA.map(src=>{const im=new Image();im.src=src;return im});
+// V1.9.22: only fetch the first area's backdrop at startup; fetch later areas shortly before use.
+const chapterImages=CHAPTER_ART_DATA.map((src,i)=>{const im=new Image();if(i===0)im.src=src;return im});
 let chapterNoticeLast=-1,chapterNoticeUntil=0;
 const chapterNotice=document.createElement('div');
 chapterNotice.id='chapterNotice';chapterNotice.setAttribute('aria-live','polite');
@@ -1218,8 +1422,23 @@ function updateChapterNotice(){
  }
  chapterNotice.className=(mode==='play'&&performance.now()<chapterNoticeUntil)?'visible':'';
 }
-const PLATFORM_ART_DATA={"0_stone":"assets/img_80e679a26387ca08.png","0_beltR":"assets/img_7584e0725ef690a8.png","0_beltL":"assets/img_bdd41b3252bebcc7.png","0_spike":"assets/img_72eae84354d6ee4b.png","0_slime":"assets/img_a802e1282431a9b9.png","1_stone":"assets/img_ab0ec7b4b2869329.png","1_beltR":"assets/img_b2f52e9ba8aba95a.png","1_beltL":"assets/img_c15ff28d9e4f7356.png","1_spike":"assets/img_c884c26a7de7e62a.png","1_slime":"assets/img_3f253b1eccdeb59b.png","2_stone":"assets/img_2275229c370db890.png","2_beltR":"assets/img_e1a3442633047c22.png","2_beltL":"assets/img_a9a13695ca4e8f57.png","2_spike":"assets/img_f2bf584f1efef8f8.png","2_slime":"assets/img_bc24b8d86bff4a8c.png","3_stone":"assets/img_0dc4679d9bdabbcc.png","3_beltR":"assets/img_a12a96a9248b4807.png","3_beltL":"assets/img_2cf609b7281ac792.png","3_spike":"assets/img_9c699bf74c0e74bf.png","3_slime":"assets/img_231043e69d9fbdf5.png","4_stone":"assets/img_5e76834fa32c3d3e.png","4_beltR":"assets/img_93721a310c2c42f0.png","4_beltL":"assets/img_463dbbaf9f80b875.png","4_spike":"assets/img_7fa55a36d3e469e1.png","4_slime":"assets/img_001f37fbed19207a.png","0_crumble0":"assets/img_cbb1da8b3da0aedd.png","0_crumble1":"assets/img_60f1fae863d03364.png","0_crumble2":"assets/img_a0c765119600229e.png","1_crumble0":"assets/img_c8988e97fbb3a5e0.png","1_crumble1":"assets/img_cc92a2060fc972a8.png","1_crumble2":"assets/img_7b443193045854e9.png","2_crumble0":"assets/img_ccc572730014ad06.png","2_crumble1":"assets/img_f5c892a1dd773320.png","2_crumble2":"assets/img_fe9298ee39a30c09.png","3_crumble0":"assets/img_494bfa4fdcdc5bc9.png","3_crumble1":"assets/img_11731cae1db2ec35.png","3_crumble2":"assets/img_f5bf33bc939adcc8.png","4_crumble0":"assets/img_677d120d5229dea9.png","4_crumble1":"assets/img_ecad1688cb3c9fba.png","4_crumble2":"assets/img_b7153de1bb254729.png"};
-const platformArt=Object.fromEntries(Object.entries(PLATFORM_ART_DATA).map(([k,v])=>{const im=new Image();im.src=v;return [k,im]}));
+const PLATFORM_ART_DATA={"0_stone":"assets/v11/plat_stone_普通-1.webp","0_slime":"assets/v11/plat_slime_弹跳-1.webp","0_spike":"assets/v11/plat_spike_尖刺-1.webp","0_beltR":"assets/v11/plat_belt_移动-1.webp","0_beltL":"assets/v11/plat_belt_移动-1.webp","0_crumble0":"assets/v11/plat_crumble_碎裂-1.1.webp","0_crumble1":"assets/v11/plat_crumble_碎裂-1.2.webp","0_crumble2":"assets/v11/plat_crumble_碎裂-1.3.webp","1_stone":"assets/v11/plat_stone_普通-2.webp","1_slime":"assets/v11/plat_slime_弹跳-2.webp","1_spike":"assets/v11/plat_spike_尖刺-2.webp","1_beltR":"assets/v11/plat_belt_移动-2.webp","1_beltL":"assets/v11/plat_belt_移动-2.webp","1_crumble0":"assets/v11/plat_crumble_碎裂2.1.webp","1_crumble1":"assets/v11/plat_crumble_碎裂-2.2.webp","1_crumble2":"assets/v11/plat_crumble_碎裂-2.3.webp","2_stone":"assets/v11/plat_stone_普通-3.webp","2_slime":"assets/v11/plat_slime_弹跳-3.webp","2_spike":"assets/v11/plat_spike_尖刺-3.webp","2_beltR":"assets/v11/plat_belt_移动-3.webp","2_beltL":"assets/v11/plat_belt_移动-3.webp","2_crumble0":"assets/v11/plat_crumble_碎裂-3.1.webp","2_crumble1":"assets/v11/plat_crumble_碎裂-3.2.webp","2_crumble2":"assets/v11/plat_crumble_碎裂-3.3.webp","3_stone":"assets/v11/plat_stone_普通-4.webp","3_slime":"assets/v11/plat_slime_弹跳-4.webp","3_spike":"assets/v11/plat_spike_尖刺-4.webp","3_beltR":"assets/v11/plat_belt_移动-4.webp","3_beltL":"assets/v11/plat_belt_移动-4.webp","3_crumble0":"assets/v11/plat_crumble_碎裂-4.1.webp","3_crumble1":"assets/v11/plat_crumble_碎裂-4.2.webp","3_crumble2":"assets/v11/plat_crumble_碎裂-4.3.webp","4_stone":"assets/v11/plat_stone_普通-5.webp","4_slime":"assets/v11/plat_slime_弹跳-5.webp","4_spike":"assets/v11/plat_spike_尖刺-5.webp","4_beltR":"assets/v11/plat_belt_移动-5.webp","4_beltL":"assets/v11/plat_belt_移动-5.webp","4_crumble0":"assets/v11/plat_crumble_碎裂-5.1.webp","4_crumble1":"assets/v11/plat_crumble_碎裂-5.2.webp","4_crumble2":"assets/v11/plat_crumble_碎裂-5.3.webp"};
+// Load only the first area's platform textures at startup.
+const platformArt=Object.fromEntries(Object.entries(PLATFORM_ART_DATA).map(([k,v])=>{const im=new Image();if(k.startsWith('0_'))im.src=v;return [k,im]}));
+let next100LoadedArea=0;
+function prefetchAreaAssets(){
+  if(!hero||!['play','count','pause','confirm'].includes(mode))return;
+  // At floor 12/32/52/72, fetch the next area's textures in advance.
+  const target=Math.min(4,Math.floor((Math.max(1,maxFloor)+8)/20));
+  if(target<=next100LoadedArea)return;
+  for(let area=next100LoadedArea+1;area<=target;area++){
+    if(!chapterImages[area].src)chapterImages[area].src=CHAPTER_ART_DATA[area];
+    for(const [key,src] of Object.entries(PLATFORM_ART_DATA)){
+      if(key.startsWith(area+'_')&&!platformArt[key].src)platformArt[key].src=src;
+    }
+  }
+  next100LoadedArea=target;
+}
 function draw(){
  ctx.clearRect(0,0,W,H);
  // Use continuous world-space progress for smooth crossfades between floors.
@@ -1254,13 +1473,17 @@ if(hero&&['play','count','pause','confirm','result'].includes(mode)){for(const p
  const art=platformArt[ch+'_'+kind];
  if(art&&art.complete&&art.naturalWidth){
    const isCrumble=p.type==='crumble';
-   const artH=isCrumble?Math.max(47,p.w*.62):p.type==='spike'?Math.max(35,(p.w+16)*.39):p.type==='slime'?36:36;
+   const profile= p.type==='stone'||p.type==='goal'?[5,1]:p.type==='belt'?ch<2?[9,.70]:ch<4?[7,.60]:[3,.60]:p.type==='crumble'?[5,.70]:p.type==='spike'?[-4,.70]:[6,1.05];
+   const artBaseH=isCrumble?Math.max(47,p.w*.62):p.type==='spike'?Math.max(35,(p.w+16)*.39):36;
+   const artH=artBaseH*profile[1];
+   const artTop=isCrumble?-artH*.30:p.type==='spike'?24-artH:-10;
    ctx.save();
    if(isCrumble&&p.used){
      if(p.age>=.30){const t=Math.min(1,(p.age-.30)/.70);ctx.globalAlpha=Math.max(0,1-t*t);ctx.translate(0,t*30)}
      else{ctx.translate(Math.sin(p.age*110)*1.2,0)}
    }
-   ctx.drawImage(art,p.x-8,y-(isCrumble?artH*.30:p.type==='spike'?artH-24:10),p.w+16,artH);
+   if(p.type==='belt'&&p.dir<0){ctx.translate(p.x+p.w/2,y);ctx.scale(-1,1);ctx.translate(-p.x-p.w/2,-y)}
+   ctx.drawImage(art,p.x-8,y+artTop+profile[0],p.w+16,artH);
    ctx.restore();
  }else{
    rrect(p.x,y,p.w,13,4,'#d4c6b4','#fff5e5');
@@ -1278,7 +1501,7 @@ if(boneImg.complete&&boneImg.naturalWidth){
 }}for(const p of particles){ctx.globalAlpha=Math.max(0,p.life/.55);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y-camY,4,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;
 let ly=laserY-camY;ctx.fillStyle='#f25773';ctx.shadowColor='#ff546d';ctx.shadowBlur=20;ctx.fillRect(0,ly,W,11);ctx.shadowBlur=0;if(laserWarning){ctx.fillStyle='#f4576c22';ctx.fillRect(0,0,W,40)}let hy=hero.y-camY;refreshSpriteAction();drawSpriteHero(hy);}
 if(mode==='menu'||mode==='choose'||mode==='tutorial'){ctx.globalAlpha=.25;ctx.fillStyle='#fff';for(let i=0;i<45;i++){let x=(i*89)%W,y=(i*113)%H;ctx.beginPath();ctx.arc(x,y,i%3+1,0,7);ctx.fill()}ctx.globalAlpha=1}}
-function frame(now){if(!last)last=now;let dt=Math.min((now-last)/1000,.05);last=now;stepAcc+=dt;while(stepAcc>=FIX){if(mode==='play'||mode==='count')update(FIX);stepAcc-=FIX}draw();requestAnimationFrame(frame)}
+function frame(now){prefetchAreaAssets();if(!last)last=now;let dt=Math.min((now-last)/1000,.05);last=now;stepAcc+=dt;while(stepAcc>=FIX){if(mode==='play'||mode==='count')update(FIX);stepAcc-=FIX}draw();requestAnimationFrame(frame)}
 window.addEventListener('keydown',e=>{if(e.target.closest('input,textarea,[contenteditable]'))return;if(['ArrowLeft','ArrowRight','Space','Escape','KeyA','KeyD'].includes(e.code))e.preventDefault();if(e.code==='ArrowLeft'||e.code==='KeyA')keyboardLeft=true;if(e.code==='ArrowRight'||e.code==='KeyD')keyboardRight=true;if((e.code==='Escape'||e.code==='Space')&&!e.repeat){if(mode==='play'||mode==='count')pause();else if(mode==='pause')resume()}});window.addEventListener('keyup',e=>{if(e.code==='ArrowLeft'||e.code==='KeyA')keyboardLeft=false;if(e.code==='ArrowRight'||e.code==='KeyD')keyboardRight=false});
 for(const b of document.querySelectorAll('.move')){let dir=Number(b.dataset.dir);b.addEventListener('pointerdown',e=>{e.preventDefault();b.setPointerCapture(e.pointerId);if(dir<0)holdLeft=true;else holdRight=true;b.classList.add('pressed')});for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,()=>{if(dir<0)holdLeft=false;else holdRight=false;b.classList.remove('pressed')})}
 // Prevent mobile long-press text selection, callout/copy and drag on gameplay controls.
@@ -1289,7 +1512,32 @@ for(const eventName of ['contextmenu','selectstart','dragstart']){
 touchControls.addEventListener('touchstart',e=>e.preventDefault(),{passive:false});
 touchControls.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
 
-$('pauseBtn').onclick=pause;panel.addEventListener('click',e=>{let person=e.target.closest('[data-person]');if(person){selected=person.dataset.person;localStorage.setItem('next100-character',selected);choose();return}let b=e.target.closest('[data-action]');if(!b)return;let a=b.dataset.action;if(a==='menu')menu();else if(a==='choose'){selected='';choose();}else if(a==='tutorial')tutorial();else if(a==='achievements')achievements();else if(a==='leaderboard')leaderboard();else if(a==='rank-nick')editRankNickname();else if(a==='start')setup();else if(a==='resume')resume();else if(a==='restart'||a==='home')confirm(a);else if(a==='do-restart')setup();else if(a==='do-home')menu();else if(a==='pause-back'){mode='play';pause()}});
+$('pauseBtn').onclick=pause;panel.addEventListener('click',e=>{let skinButton=e.target.closest('[data-skin]');if(skinButton){const who=skinButton.dataset.skin;if(who==='月'||who==='灿'){v11Skins[who]=1-v11Skins[who];choose();}return}let person=e.target.closest('[data-person]');if(person){selected=person.dataset.person;localStorage.setItem('next100-character',selected);choose();return}let b=e.target.closest('[data-action]');if(!b)return;let a=b.dataset.action;if(a==='menu')menu();else if(a==='choose'){selected='';choose();}else if(a==='tutorial')tutorial();else if(a==='achievements')achievements();else if(a==='leaderboard')leaderboard();else if(a==='rank-nick')editRankNickname();else if(a==='difficulty')difficultyMenu();else if(a==='choose-back')choose();else if(a==='start-normal'){difficulty='normal';try{setup()}catch(err){showStartFailure(err)}}else if(a==='start-hard'){difficulty='hard';try{setup()}catch(err){showStartFailure(err)}}else if(a==='start')setup();else if(a==='resume')resume();else if(a==='restart'||a==='home')confirm(a);else if(a==='do-restart')setup();else if(a==='do-home')menu();else if(a==='pause-back'){mode='play';pause()}});
+// V1.1.1 PC input bridge: activate the character-selection start button on mouse press.
+// The existing delegated click handler remains responsible for touch/pen devices.
+panel.addEventListener('pointerdown', e=>{
+  if(e.pointerType !== 'mouse' || e.button !== 0 || mode !== 'choose') return;
+  const start=e.target.closest('button[data-action="difficulty"]');
+  if(!start || start.disabled || !panel.contains(start)) return;
+  e.preventDefault();
+  e.stopPropagation();
+  try { difficultyMenu(); } catch(err) { console.error('PC difficulty menu failed:',err); }
+}, true);
+// Keyboard accessibility / backup for desktop browsers.
+panel.addEventListener('keydown', e=>{
+  if(mode==='choose' && e.key==='Enter' && e.target.closest('button[data-action="difficulty"]')){
+    e.preventDefault();e.stopPropagation();
+    if(!e.target.disabled) difficultyMenu();
+  }
+}, true);
+// Keep errors visible when a browser fails silently during the launch sequence.
+window.addEventListener('error',event=>{
+ if(mode==='choose'||mode==='difficulty'||mode==='count'){
+  const msg=String(event.message||'未知错误');
+  console.error('[下一百层启动检查]',msg);
+  if(mode==='difficulty'&&msg!=='Script error.')showStartFailure(Error(msg));
+ }
+});
 window.addEventListener('visibilitychange',()=>{if(document.hidden&&(mode==='play'||mode==='count'))pause()});window.addEventListener('blur',()=>{if(mode==='play')pause()});window.addEventListener('orientationchange',()=>{if(mode==='play'||mode==='count')pause()});menu();requestAnimationFrame(frame);if(!savedNickname())openNicknameEditor(true);
 })();
 </script></body></html>
